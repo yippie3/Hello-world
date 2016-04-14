@@ -1,0 +1,1049 @@
+spawn telnet 10.20.98.200
+Trying 10.20.98.200...
+Connected to 10.20.98.200.
+Escape character is '^]'.
+
+
+Network OS (MMVM)
+
+
+6.0.1nos_fusion_dev_160318_0327
+
+MMVM login: root
+Password: 
+Disclaimer for Root and Factory Accounts Usage!
+
+This switch is equipped with Root and Factory accounts that are intended
+for diagnostics and debugging purposes solely by the Equipment vendor's
+trained engineers. Improper use of the functionality made available 
+through the Root or Factory account could cause significant harm and 
+disruption to the operation of the SAN fabric.
+
+Your use of the functionality made available through the Root or Factory
+account is at your sole risk and you assume all liability resulting from
+such use. The Equipment vendor shall have no liability for any losses 
+or damages arising from or relating to the use of the Root or Factory
+account (and the functionality enabled thereby) by anyone other than 
+the Equipment vendor's authorized engineers.
+
+Proceeding with the usage of this switch as the Root or Factory user
+explicitly indicates your agreement to the terms of this disclaimer.
+
+Please change passwords for switch default accounts now.
+Use Control-C to exit or press 'Enter' key to proceed.
+Changing default password for "root"
+Warning:  Access to  the Root account may be required  for
+complete access  of  the switch.  Please  ensure  the Root
+password is documented in a secure location. Recovery of a
+lost Root password will result in downtime.
+
+Changing password for root
+Enter new password: 
+Password unchanged.
+passwd: Authentication token manipulation error
+
+MMVM:FID128:root> noscli
+
+SECURITY WARNING: The default password for at least
+one default account (root, admin and user) have not been changed.
+
+Welcome to the Brocade Network Operating System Software
+admin connected from 10.102.141.57 using console on MMVM
+[?7hMMVM# 
+MMVM# show run | nomore
+root enable
+clock timezone Etc/GMT
+diag post enable
+hardware
+ profile tcam default
+ profile lag lag-profile-1
+ profile counters default
+!
+http server use-vrf default-vrf
+http server use-vrf mgmt-vrf
+linecard 1 LC72X10G
+linecard 3 LC60X40G
+linecard 5 LC72X10G
+linecard 7 LC72X10G
+logging raslog console INFO
+logging auditlog class SECURITY
+logging auditlog class CONFIGURATION
+logging auditlog class FIRMWARE
+logging syslog-facility local LOG_LOCAL7
+logging syslog-client localip CHASSIS_IP
+switch-attributes chassis-name SDN2000-8
+switch-attributes host-name sw0
+no support autoupload enable
+support ffdc
+telnet server use-vrf default-vrf
+telnet server use-vrf mgmt-vrf
+ssh server key rsa 2048
+ssh server key ecdsa 256
+ssh server key dsa
+ssh server use-vrf default-vrf
+ssh server use-vrf mgmt-vrf
+snmp-server contact "Field Support."
+snmp-server location "End User Premise."
+snmp-server sys-descr "Brocade BR-SLX9850-8 Router"
+snmp-server enable trap
+system-monitor fan threshold marginal-threshold 1 down-threshold 2
+system-monitor fan alert state removed action raslog
+system-monitor power threshold marginal-threshold 3 down-threshold 4
+system-monitor power alert state removed action raslog
+system-monitor temp threshold marginal-threshold 1 down-threshold 2
+system-monitor cid-card threshold marginal-threshold 1 down-threshold 0
+system-monitor cid-card alert state removed action raslog
+system-monitor sfp alert state none action none
+system-monitor compact-flash threshold marginal-threshold 1 down-threshold 0
+system-monitor MM threshold marginal-threshold 1 down-threshold 0
+system-monitor LineCard threshold marginal-threshold 1 down-threshold 0
+system-monitor LineCard alert state removed action raslog
+system-monitor SFM threshold marginal-threshold 1 down-threshold 0
+line vty
+ exec-timeout 10
+!
+threshold-monitor Buffer limit 70
+vrf mgmt-vrf
+ address-family ipv4 unicast
+  ip route 0.0.0.0/0 10.20.96.1
+ !
+ address-family ipv6 unicast
+ !
+!
+role name admin desc Administrator
+role name user desc User
+aaa authentication login local
+aaa accounting exec default start-stop none
+aaa accounting commands default start-stop none
+service password-encryption
+username admin password "BwrsDbB+tABWGWpINOVKoQ==\n" encryption-level 7 role admin desc Administrator
+username user password "BwrsDbB+tABWGWpINOVKoQ==\n" encryption-level 7 role user desc User
+vlan 1
+!
+qos map dscp-mutation all-zero-map
+ map dscp 0-63 to dscp 0
+!
+qos map dscp-traffic-class all-zero-map
+ map dscp 0-63 to traffic-class 0
+!
+qos map dscp-cos all-zero-map
+ map dscp 0-63 to cos 0
+!
+qos map traffic-class-cos all-zero-map 0 0 0 0 0 0 0 0
+qos map cos-traffic-class all-zero-map
+ map cos 0 to traffic-class 0
+ map cos 1 to traffic-class 0
+ map cos 2 to traffic-class 0
+ map cos 3 to traffic-class 0
+ map cos 4 to traffic-class 0
+ map cos 5 to traffic-class 0
+ map cos 6 to traffic-class 0
+ map cos 7 to traffic-class 0
+!
+protocol lldp
+ advertise dcbx-tlv
+ advertise optional-tlv port-description
+ advertise optional-tlv system-name
+ system-description Brocade BR-SLX9850-8 Router
+!
+vlan dot1q tag native
+class-map cee
+!
+class-map default
+!
+no protocol vrrp
+no protocol vrrp-extended
+interface Management 1/1
+ no tcp burstrate
+ no shutdown
+ vrf forwarding mgmt-vrf
+ ip icmp echo-reply
+ no ip address dhcp
+ ipv6 icmpv6 echo-reply
+!
+interface Management 1/2
+ no tcp burstrate
+ no shutdown
+ vrf forwarding mgmt-vrf
+ ip icmp echo-reply
+ no ip address dhcp
+ ip address 10.20.98.200/20
+ ipv6 icmpv6 echo-reply
+!
+interface Ethernet 1/1
+ shutdown
+!
+interface Ethernet 1/2
+ shutdown
+!
+interface Ethernet 1/3
+ shutdown
+!
+interface Ethernet 1/4
+ shutdown
+!
+interface Ethernet 1/5
+ shutdown
+!
+interface Ethernet 1/6
+ shutdown
+!
+interface Ethernet 1/7
+ shutdown
+!
+interface Ethernet 1/8
+ shutdown
+!
+interface Ethernet 1/9
+ shutdown
+!
+interface Ethernet 1/10
+ shutdown
+!
+interface Ethernet 1/11
+ shutdown
+!
+interface Ethernet 1/12
+ shutdown
+!
+interface Ethernet 1/13
+ shutdown
+!
+interface Ethernet 1/14
+ shutdown
+!
+interface Ethernet 1/15
+ shutdown
+!
+interface Ethernet 1/16
+ shutdown
+!
+interface Ethernet 1/17
+ shutdown
+!
+interface Ethernet 1/18
+ shutdown
+!
+interface Ethernet 1/19
+ shutdown
+!
+interface Ethernet 1/20
+ shutdown
+!
+interface Ethernet 1/21
+ shutdown
+!
+interface Ethernet 1/22
+ shutdown
+!
+interface Ethernet 1/23
+ shutdown
+!
+interface Ethernet 1/24
+ shutdown
+!
+interface Ethernet 1/25
+ shutdown
+!
+interface Ethernet 1/26
+ shutdown
+!
+interface Ethernet 1/27
+ shutdown
+!
+interface Ethernet 1/28
+ shutdown
+!
+interface Ethernet 1/29
+ shutdown
+!
+interface Ethernet 1/30
+ shutdown
+!
+interface Ethernet 1/31
+ shutdown
+!
+interface Ethernet 1/32
+ shutdown
+!
+interface Ethernet 1/33
+ shutdown
+!
+interface Ethernet 1/34
+ shutdown
+!
+interface Ethernet 1/35
+ shutdown
+!
+interface Ethernet 1/36
+ shutdown
+!
+interface Ethernet 1/37
+ shutdown
+!
+interface Ethernet 1/38
+ shutdown
+!
+interface Ethernet 1/39
+ shutdown
+!
+interface Ethernet 1/40
+ shutdown
+!
+interface Ethernet 1/41
+ shutdown
+!
+interface Ethernet 1/42
+ shutdown
+!
+interface Ethernet 1/43
+ shutdown
+!
+interface Ethernet 1/44
+ shutdown
+!
+interface Ethernet 1/45
+ shutdown
+!
+interface Ethernet 1/46
+ shutdown
+!
+interface Ethernet 1/47
+ shutdown
+!
+interface Ethernet 1/48
+ shutdown
+!
+interface Ethernet 1/49
+ shutdown
+!
+interface Ethernet 1/50
+ shutdown
+!
+interface Ethernet 1/51
+ shutdown
+!
+interface Ethernet 1/52
+ shutdown
+!
+interface Ethernet 1/53
+ shutdown
+!
+interface Ethernet 1/54
+ shutdown
+!
+interface Ethernet 1/55
+ shutdown
+!
+interface Ethernet 1/56
+ shutdown
+!
+interface Ethernet 1/57
+ shutdown
+!
+interface Ethernet 1/58
+ shutdown
+!
+interface Ethernet 1/59
+ shutdown
+!
+interface Ethernet 1/60
+ shutdown
+!
+interface Ethernet 1/61
+ shutdown
+!
+interface Ethernet 1/62
+ shutdown
+!
+interface Ethernet 1/63
+ shutdown
+!
+interface Ethernet 1/64
+ shutdown
+!
+interface Ethernet 1/65
+ shutdown
+!
+interface Ethernet 1/66
+ shutdown
+!
+interface Ethernet 1/67
+ shutdown
+!
+interface Ethernet 1/68
+ shutdown
+!
+interface Ethernet 1/69
+ shutdown
+!
+interface Ethernet 1/70
+ shutdown
+!
+interface Ethernet 1/71
+ shutdown
+!
+interface Ethernet 1/72
+ shutdown
+!
+interface Ethernet 1/125
+ description Homerun port to MM1
+ channel-group 1 mode on type standard
+ no shutdown
+!
+interface Ethernet 1/126
+ description Homerun port to MM2
+ channel-group 2 mode on type standard
+ no shutdown
+!
+interface Ethernet 3/1
+ shutdown
+!
+interface Ethernet 3/2
+ shutdown
+!
+interface Ethernet 3/3
+ shutdown
+!
+interface Ethernet 3/4
+ shutdown
+!
+interface Ethernet 3/5
+ shutdown
+!
+interface Ethernet 3/6
+ shutdown
+!
+interface Ethernet 3/7
+ shutdown
+!
+interface Ethernet 3/8
+ shutdown
+!
+interface Ethernet 3/9
+ shutdown
+!
+interface Ethernet 3/10
+ shutdown
+!
+interface Ethernet 3/11
+ shutdown
+!
+interface Ethernet 3/12
+ shutdown
+!
+interface Ethernet 3/13
+ shutdown
+!
+interface Ethernet 3/14
+ shutdown
+!
+interface Ethernet 3/15
+ shutdown
+!
+interface Ethernet 3/16
+ shutdown
+!
+interface Ethernet 3/17
+ shutdown
+!
+interface Ethernet 3/18
+ shutdown
+!
+interface Ethernet 3/19
+ shutdown
+!
+interface Ethernet 3/20
+ shutdown
+!
+interface Ethernet 3/21
+ shutdown
+!
+interface Ethernet 3/22
+ shutdown
+!
+interface Ethernet 3/23
+ shutdown
+!
+interface Ethernet 3/24
+ shutdown
+!
+interface Ethernet 3/25
+ shutdown
+!
+interface Ethernet 3/26
+ shutdown
+!
+interface Ethernet 3/27
+ shutdown
+!
+interface Ethernet 3/28
+ shutdown
+!
+interface Ethernet 3/29
+ shutdown
+!
+interface Ethernet 3/30
+ shutdown
+!
+interface Ethernet 3/31
+ shutdown
+!
+interface Ethernet 3/32
+ shutdown
+!
+interface Ethernet 3/33
+ shutdown
+!
+interface Ethernet 3/34
+ shutdown
+!
+interface Ethernet 3/35
+ shutdown
+!
+interface Ethernet 3/36
+ shutdown
+!
+interface Ethernet 3/37
+ shutdown
+!
+interface Ethernet 3/38
+ shutdown
+!
+interface Ethernet 3/39
+ shutdown
+!
+interface Ethernet 3/40
+ shutdown
+!
+interface Ethernet 3/41
+ shutdown
+!
+interface Ethernet 3/42
+ shutdown
+!
+interface Ethernet 3/43
+ shutdown
+!
+interface Ethernet 3/44
+ shutdown
+!
+interface Ethernet 3/45
+ shutdown
+!
+interface Ethernet 3/46
+ shutdown
+!
+interface Ethernet 3/47
+ shutdown
+!
+interface Ethernet 3/48
+ shutdown
+!
+interface Ethernet 3/49
+ shutdown
+!
+interface Ethernet 3/50
+ shutdown
+!
+interface Ethernet 3/51
+ shutdown
+!
+interface Ethernet 3/52
+ shutdown
+!
+interface Ethernet 3/53
+ shutdown
+!
+interface Ethernet 3/54
+ shutdown
+!
+interface Ethernet 3/55
+ shutdown
+!
+interface Ethernet 3/56
+ shutdown
+!
+interface Ethernet 3/57
+ shutdown
+!
+interface Ethernet 3/58
+ shutdown
+!
+interface Ethernet 3/59
+ shutdown
+!
+interface Ethernet 3/60
+ shutdown
+!
+interface Ethernet 3/125
+ description Homerun port to MM1
+ channel-group 1 mode on type standard
+ no shutdown
+!
+interface Ethernet 3/126
+ description Homerun port to MM2
+ channel-group 2 mode on type standard
+ no shutdown
+!
+interface Ethernet 5/1
+ shutdown
+!
+interface Ethernet 5/2
+ shutdown
+!
+interface Ethernet 5/3
+ shutdown
+!
+interface Ethernet 5/4
+ shutdown
+!
+interface Ethernet 5/5
+ shutdown
+!
+interface Ethernet 5/6
+ shutdown
+!
+interface Ethernet 5/7
+ shutdown
+!
+interface Ethernet 5/8
+ shutdown
+!
+interface Ethernet 5/9
+ shutdown
+!
+interface Ethernet 5/10
+ shutdown
+!
+interface Ethernet 5/11
+ shutdown
+!
+interface Ethernet 5/12
+ shutdown
+!
+interface Ethernet 5/13
+ shutdown
+!
+interface Ethernet 5/14
+ shutdown
+!
+interface Ethernet 5/15
+ shutdown
+!
+interface Ethernet 5/16
+ shutdown
+!
+interface Ethernet 5/17
+ shutdown
+!
+interface Ethernet 5/18
+ shutdown
+!
+interface Ethernet 5/19
+ shutdown
+!
+interface Ethernet 5/20
+ shutdown
+!
+interface Ethernet 5/21
+ shutdown
+!
+interface Ethernet 5/22
+ shutdown
+!
+interface Ethernet 5/23
+ shutdown
+!
+interface Ethernet 5/24
+ shutdown
+!
+interface Ethernet 5/25
+ shutdown
+!
+interface Ethernet 5/26
+ shutdown
+!
+interface Ethernet 5/27
+ shutdown
+!
+interface Ethernet 5/28
+ shutdown
+!
+interface Ethernet 5/29
+ shutdown
+!
+interface Ethernet 5/30
+ shutdown
+!
+interface Ethernet 5/31
+ shutdown
+!
+interface Ethernet 5/32
+ shutdown
+!
+interface Ethernet 5/33
+ shutdown
+!
+interface Ethernet 5/34
+ shutdown
+!
+interface Ethernet 5/35
+ shutdown
+!
+interface Ethernet 5/36
+ shutdown
+!
+interface Ethernet 5/37
+ shutdown
+!
+interface Ethernet 5/38
+ shutdown
+!
+interface Ethernet 5/39
+ shutdown
+!
+interface Ethernet 5/40
+ shutdown
+!
+interface Ethernet 5/41
+ shutdown
+!
+interface Ethernet 5/42
+ shutdown
+!
+interface Ethernet 5/43
+ shutdown
+!
+interface Ethernet 5/44
+ shutdown
+!
+interface Ethernet 5/45
+ shutdown
+!
+interface Ethernet 5/46
+ shutdown
+!
+interface Ethernet 5/47
+ shutdown
+!
+interface Ethernet 5/48
+ shutdown
+!
+interface Ethernet 5/49
+ shutdown
+!
+interface Ethernet 5/50
+ shutdown
+!
+interface Ethernet 5/51
+ shutdown
+!
+interface Ethernet 5/52
+ shutdown
+!
+interface Ethernet 5/53
+ shutdown
+!
+interface Ethernet 5/54
+ shutdown
+!
+interface Ethernet 5/55
+ shutdown
+!
+interface Ethernet 5/56
+ shutdown
+!
+interface Ethernet 5/57
+ shutdown
+!
+interface Ethernet 5/58
+ shutdown
+!
+interface Ethernet 5/59
+ shutdown
+!
+interface Ethernet 5/60
+ shutdown
+!
+interface Ethernet 5/61
+ shutdown
+!
+interface Ethernet 5/62
+ shutdown
+!
+interface Ethernet 5/63
+ shutdown
+!
+interface Ethernet 5/64
+ shutdown
+!
+interface Ethernet 5/65
+ shutdown
+!
+interface Ethernet 5/66
+ shutdown
+!
+interface Ethernet 5/67
+ shutdown
+!
+interface Ethernet 5/68
+ shutdown
+!
+interface Ethernet 5/69
+ shutdown
+!
+interface Ethernet 5/70
+ shutdown
+!
+interface Ethernet 5/71
+ shutdown
+!
+interface Ethernet 5/72
+ shutdown
+!
+interface Ethernet 5/125
+ description Homerun port to MM1
+ channel-group 1 mode on type standard
+ no shutdown
+!
+interface Ethernet 5/126
+ description Homerun port to MM2
+ channel-group 2 mode on type standard
+ no shutdown
+!
+interface Ethernet 7/1
+ shutdown
+!
+interface Ethernet 7/2
+ shutdown
+!
+interface Ethernet 7/3
+ shutdown
+!
+interface Ethernet 7/4
+ shutdown
+!
+interface Ethernet 7/5
+ shutdown
+!
+interface Ethernet 7/6
+ shutdown
+!
+interface Ethernet 7/7
+ shutdown
+!
+interface Ethernet 7/8
+ shutdown
+!
+interface Ethernet 7/9
+ shutdown
+!
+interface Ethernet 7/10
+ shutdown
+!
+interface Ethernet 7/11
+ shutdown
+!
+interface Ethernet 7/12
+ shutdown
+!
+interface Ethernet 7/13
+ shutdown
+!
+interface Ethernet 7/14
+ shutdown
+!
+interface Ethernet 7/15
+ shutdown
+!
+interface Ethernet 7/16
+ shutdown
+!
+interface Ethernet 7/17
+ shutdown
+!
+interface Ethernet 7/18
+ shutdown
+!
+interface Ethernet 7/19
+ shutdown
+!
+interface Ethernet 7/20
+ shutdown
+!
+interface Ethernet 7/21
+ shutdown
+!
+interface Ethernet 7/22
+ shutdown
+!
+interface Ethernet 7/23
+ shutdown
+!
+interface Ethernet 7/24
+ shutdown
+!
+interface Ethernet 7/25
+ shutdown
+!
+interface Ethernet 7/26
+ shutdown
+!
+interface Ethernet 7/27
+ shutdown
+!
+interface Ethernet 7/28
+ shutdown
+!
+interface Ethernet 7/29
+ shutdown
+!
+interface Ethernet 7/30
+ shutdown
+!
+interface Ethernet 7/31
+ shutdown
+!
+interface Ethernet 7/32
+ shutdown
+!
+interface Ethernet 7/33
+ shutdown
+!
+interface Ethernet 7/34
+ shutdown
+!
+interface Ethernet 7/35
+ shutdown
+!
+interface Ethernet 7/36
+ shutdown
+!
+interface Ethernet 7/37
+ shutdown
+!
+interface Ethernet 7/38
+ shutdown
+!
+interface Ethernet 7/39
+ shutdown
+!
+interface Ethernet 7/40
+ shutdown
+!
+interface Ethernet 7/41
+ shutdown
+!
+interface Ethernet 7/42
+ shutdown
+!
+interface Ethernet 7/43
+ shutdown
+!
+interface Ethernet 7/44
+ shutdown
+!
+interface Ethernet 7/45
+ shutdown
+!
+interface Ethernet 7/46
+ shutdown
+!
+interface Ethernet 7/47
+ shutdown
+!
+interface Ethernet 7/48
+ shutdown
+!
+interface Ethernet 7/49
+ shutdown
+!
+interface Ethernet 7/50
+ shutdown
+!
+interface Ethernet 7/51
+ shutdown
+!
+interface Ethernet 7/52
+ shutdown
+!
+interface Ethernet 7/53
+ shutdown
+!
+interface Ethernet 7/54
+ shutdown
+!
+interface Ethernet 7/55
+ shutdown
+!
+interface Ethernet 7/56
+ shutdown
+!
+interface Ethernet 7/57
+ shutdown
+!
+interface Ethernet 7/58
+ shutdown
+!
+interface Ethernet 7/59
+ shutdown
+!
+interface Ethernet 7/60
+ shutdown
+!
+interface Ethernet 7/61
+ shutdown
+!
+interface Ethernet 7/62
+ shutdown
+!
+interface Ethernet 7/63
+ shutdown
+!
+interface Ethernet 7/64
+ shutdown
+!
+interface Ethernet 7/65
+ shutdown
+!
+interface Ethernet 7/66
+ shutdown
+!
+interface Ethernet 7/67
+ shutdown
+!
+interface Ethernet 7/68
+ shutdown
+!
+interface Ethernet 7/69
+ shutdown
+!
+interface Ethernet 7/70
+ shutdown
+!
+interface Ethernet 7/71
+ shutdown
+!
+interface Ethernet 7/72
+ shutdown
+!
+interface Ethernet 7/125
+ description Homerun port to MM1
+ channel-group 1 mode on type standard
+ no shutdown
+!
+interface Ethernet 7/126
+ description Homerun port to MM2
+ channel-group 2 mode on type standard
+ no shutdown
+!
+interface Port-channel 1
+ description Homerun port-channel on MM1
+ shutdown
+!
+interface Port-channel 2
+ description Homerun port-channel on MM2
+ shutdown
+!
+MMVM# 

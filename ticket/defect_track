@@ -1,0 +1,1481 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" style="height: 799px;"><!-- wrapper --><head>
+		<title>TeamTrack - Quality Management System</title>
+        
+		    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+		    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+			<!--[if IE 8]>
+				<script type="text/javascript">
+				window.location.href = "tmtrack.dll?stdPage&template=errunsupported&message=1";
+				</script>
+			<![endif]-->
+        
+        <script type="text/javascript" src="javascript/20102015419/3rdparty/log4javascript.js"></script>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<script type="text/javascript" src="javascript/20102015419/logger.js"></script>
+
+<script type="text/javascript">
+function sbmLogStub(){}
+sbmLogStub.prototype = {
+  trace: function(){},
+  debug: function(){},
+  info: function(){},
+  warn: function(){},
+  error: function(){},
+  fatal: function(){},
+  assert: function(){},
+  time: function(){},
+  timeEnd: function(){}
+};
+var logContexts = {"XId":"b0a0051d-9b04-404b-ac7e-9d77cd8697c0","level":"INFO"};
+var logLib = null;
+var sbmlog;
+// Get the template name
+var template = "";
+var reTemplate = /template=(reports\/?(%2f)?)?(\w+)/i;
+if ( reTemplate.test( location.href ))
+{
+  template = location.href.match(reTemplate)[3];
+}
+
+try {
+  if ( window.opener &amp;&amp; typeof(window.opener.logLib) !== "undefined" ) 
+    logLib = window.opener.logLib;
+}
+catch(e){
+  logLib = null;
+}
+try {
+  if ( logLib === null ) {
+    if ( window == top ) 
+      logLib = top;
+    else if ( parent &amp;&amp; typeof(parent.logLib) !== "undefined" ) 
+      logLib = parent.logLib;
+    else if ( top &amp;&amp; top.logLib )
+      logLib = top.logLib;
+  }
+  sbmlog = new logLib.sbmLogger( "tmtrack.dll?JSONPage&amp;Command=logactdiagmsg",
+                             "classic", logContexts.XId, logLib.log4javascript );
+  sbmlog.init( logContexts.level, template );
+}
+catch(e) {
+  delete sbmlog;
+  sbmlog = new sbmLogStub();
+}
+
+function RenderCompleteMsg()
+{
+  sbmlog.timeEnd("PageRender",arguments.callee.name);
+};
+
+sbmlog.time("PageRender");
+
+// Add a load handler to log a message
+if ( document.addEventListener ) {
+  window.addEventListener('load',RenderCompleteMsg,false);
+}
+else {
+  window.attachEvent('onload',RenderCompleteMsg);
+}
+
+// Add a global error handler to try to catch errors
+function SBMDefaultHandler(desc,page,line,chr)  {
+  var loc = "";
+  if ( arguments.callee.caller &amp;&amp; arguments.callee.caller.name ) {
+    loc = arguments.callee.caller.name;
+  }
+  sbmlog.error(desc = desc + "\r\n" + page + "\r\n" + line, loc);
+  if (window.console)
+  	console.log(desc + "\r\n" + page + "\r\n" + line);
+  return true;
+}
+if (localStorage.getItem('ShowExceptionsInConsole') !== 'true') {
+  window.onerror = SBMDefaultHandler;
+}
+</script>
+
+		<script type="text/javascript" src="javascript/20102015419/utilities_3rdparty.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="styles/20102015419/modern_graphite/main.css" />
+<link rel="stylesheet" type="text/css" href="styles/20102015419/mainoverride.css" />
+
+		<link rel="stylesheet" type="text/css" href="styles/20102015419/modern_graphite/common/static.css" />
+
+		<link rel="stylesheet" type="text/css" href="styles/20102015419/modern_graphite/3rdparty/bootstrap-wysiwyg/bootstrap-wysiwyg.css" />
+
+
+		<link rel="shortcut icon" href="images/favicon.ico" />
+
+    <script type="text/javascript">
+			var userID = "11187";
+			var app = "Application";
+			var currentSolution = 8;
+			var external = false;
+			var socialSticky = false;
+			var ssoToken = null;
+			var hssoserver = "";
+			var hssopath = "";
+			var windowHtmlTemplate = 'ae_wrapper';
+
+			
+
+			var dll = "tmtrack.dll?";
+			var dllsid = "tmtrack.dll?sid=shwuompv&amp;";
+			var exit = "Exit";
+			var favRoot = -53836;
+			var pubRoot = -1;
+      var kbRoot = -2;
+      var linksRoot = -53837;
+
+			var reauthenticate = false;
+
+
+			
+				var launchPage = false;
+			
+
+			var USERSETTING_EG_DEFAULTREPORTTEMPLATE = 2;
+var USERSETTING_EG_OVERRIDECUSTOMFORMS = 3;
+var USERSETTING_SYS_USEACCESSIBLEINTERFACE = 4;
+var USERSETTING_EG_ADVANCEDEDITMODE = 5;
+var USERSETTING_SYS_NAVPANELEXPANSION = 6;
+var USERSETTING_SYS_SECTIONSEXPANSION = 7;
+var USERSETTING_SYS_CURRENTSECTION = 8;
+var USERSETTING_EG_SHOWLEGEND = 9;
+var USERSETTING_SYS_NAVPANEWIDTH = 10;
+var USERSETTING_EG_SHOWFOCUSHELPER = 11;
+var USERSETTING_EG_SHOWQUICKTRANSCONFIRMATION = 12;
+var USERSETTING_SYS_DISPLAYTABS = 13;
+var USERSETTING_SYS_SHOWCONFIRMATIONALERTS= 14;
+var USERSETTING_SYS_FORMRESTOREOPTION= 15;
+
+var userPreferencesJsonObj = {"UserPreferences": [{"id":"2","value":false,"type":"boolean","changed":false},{"id":"3","value":false,"type":"boolean","changed":false},{"id":"4","value":false,"type":"boolean","changed":false},{"id":"5","value":false,"type":"boolean","changed":false},{"id":"6","value":true,"type":"boolean","changed":false},{"id":"7","value":true,"type":"boolean","changed":false},{"id":"8","value":"submit","type":"string","changed":false},{"id":"9","value":true,"type":"boolean","changed":false},{"id":"10","value":"250","type":"string","changed":false},{"id":"11","value":false,"type":"boolean","changed":false},{"id":"12","value":true,"type":"boolean","changed":false},{"id":"13","value":"3","type":"string","changed":false},{"id":"14","value":true,"type":"boolean","changed":false},{"id":"15","value":"always","type":"string","changed":false}]};
+
+			var idsearchFocus = false;
+			var homeurl = "tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=8";
+			var expandTopStr = "Expand Tabs Bar";
+			var collapseTopStr = "Collapse Tabs Bar";
+			var moreStr = "More...";
+			var searchEmptyStr = "Please enter a search value";
+			var enterFavoriteNameLabel = "Enter Favorite Name:";
+			var noDeleteSysLabel = "Sorry, can not delete a System folder.";
+			var enterFolderNameLabel = "Enter Folder Name:";
+			var enterUrlLabel = "URL:";
+			var noDeleteSubLabel = "Sorry, must delete a all sub folders first.";
+			var confirmDeleteLabel = "This folder is not empty. Delete anyway?";
+			var noAddLabel = "Sorry, can not add to a System folder.";
+			var noAddErrorLabel = "Can not add this link to your Favorites";
+			var linkAddedLabel = "Link added to your Favorites / Quick Links";
+			var busyLabel = "Busy, please wait...";
+			var defaultFolderName = "New Folder";
+			var reportMadeHome = "Successfully changed home page report";
+			var noDeleteUnInitFolderLabel = "Can not delete an uninitialized Folder.\nFolder will be Expanded first.";
+			var cutTooltip = "To complete the cut, click the Paste link.";
+			var iconSelectTooltip = "Click to select this node";
+			var iconExpandTooltip = "Click to expand or collapse this node";
+			var adminClearLocks = "Cleared Admin Locks";
+			var reportDeleteMessage = "Deletion of the selected report(s) completed successfully. ";
+			var noSubFolderMsg = "This System folder can not have sub-folders.";
+			var noFolderRenameMsg = "This System folder can not be renamed.";
+			var noFolderMoveMsg = "This System folder can not be moved.";
+			var noAddFavoritesMsg = "Sorry, Transition Forms are not applicable as Favorites.";
+			var confirmReportDelete = "Please confirm the permanent deletion of this report.";
+			var expandShellStr = "Show Full Interface";
+			var expandShellTooltip = "Expand the main application shell";
+			var emptyStr = "Empty";
+			var copyUrlStr = "Copy URL to Clipboard";
+			var copyUrlAlertStr = "Press CTRL+C to copy URL to the Clipboard";
+			var CMNSolID = 0;
+			var closeStr = "Close";
+			var ids_msg_existing_window_alert = "Existing dialog is already open for this action.";
+
+			var openSubmitIfOneProject = "";
+			if (openSubmitIfOneProject == null || openSubmitIfOneProject.length == 0 || openSubmitIfOneProject.toLowerCase() == "true") {
+				openSubmitIfOneProject = true; //default
+			} else {
+				openSubmitIfOneProject = false;
+			}
+
+			var multiViewCondensed = "";
+
+			if (multiViewCondensed == null || multiViewCondensed.length == 0) {
+				multiViewCondensed = false; //default
+			}
+			else {
+				multiViewCondensed = true;
+			}
+
+			var multiTableSearch = "";
+
+			if (multiTableSearch == null || multiTableSearch.length == 0) {
+				multiTableSearch = false; //default
+			}
+			else {
+				multiTableSearch = true;
+			}
+
+			var overlay;
+			var moreOverlay;
+			var qlOverlay;
+			var oTimeout = null;
+
+			var solutionArray = new Array(15);
+solutionArray[0] = new Array(2);
+solutionArray[0][0] = 8;
+solutionArray[0][1] = 0;
+solutionArray[1] = new Array(2);
+solutionArray[1][0] = 10;
+solutionArray[1][1] = 0;
+solutionArray[2] = new Array(2);
+solutionArray[2][0] = 12;
+solutionArray[2][1] = 0;
+solutionArray[3] = new Array(2);
+solutionArray[3][0] = 19;
+solutionArray[3][1] = 0;
+solutionArray[4] = new Array(2);
+solutionArray[4][0] = 20;
+solutionArray[4][1] = 0;
+solutionArray[5] = new Array(2);
+solutionArray[5][0] = 1;
+solutionArray[5][1] = 0;
+solutionArray[6] = new Array(2);
+solutionArray[6][0] = 27;
+solutionArray[6][1] = 0;
+solutionArray[7] = new Array(2);
+solutionArray[7][0] = 32;
+solutionArray[7][1] = 0;
+solutionArray[8] = new Array(2);
+solutionArray[8][0] = 34;
+solutionArray[8][1] = 0;
+solutionArray[9] = new Array(2);
+solutionArray[9][0] = 26;
+solutionArray[9][1] = 0;
+solutionArray[10] = new Array(2);
+solutionArray[10][0] = 25;
+solutionArray[10][1] = 0;
+solutionArray[11] = new Array(2);
+solutionArray[11][0] = 37;
+solutionArray[11][1] = 0;
+solutionArray[12] = new Array(2);
+solutionArray[12][0] = 28;
+solutionArray[12][1] = 0;
+solutionArray[13] = new Array(2);
+solutionArray[13][0] = 30;
+solutionArray[13][1] = 0;
+solutionArray[14] = new Array(2);
+solutionArray[14][0] = 36;
+solutionArray[14][1] = 0;
+
+		</script>
+
+		<!--jquerysbm.htm-->
+<script type="text/javascript" src="javascript/20102015419/3rdparty/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="javascript/20102015419/3rdparty/jquery-migrate-1.2.1.js"></script>
+
+<script type="text/javascript" src="javascript/20102015419/3rdparty/jquery.maskedinput.min.js"></script>
+
+<script type="text/javascript">
+    var jQuerySBM = jQuery.noConflict(true);
+    
+	if ( !jQuerySBM.curCSS ) jQuerySBM.curCSS = jQuerySBM.css;
+
+	/**
+	* Change visibility of select list option elements
+	* @param  {boolean}   stateVal	  show hidden options if true; hide it otherwise. If not setted then toggle visibility, based on it's current state
+	*/
+	jQuerySBM.fn.toggleOptionVisibility = function (stateVal) {
+		var isBool = typeof stateVal === "boolean";
+		return this.each(function () {
+			 var $this = jQuerySBM(this);
+			 if (isBool) {
+				 if (stateVal) $this.filter("span &gt; option").unwrap();
+				 else $this.filter(":not(span &gt; option)").wrap("&lt;span&gt;").parent().hide();
+			 }
+			 else {
+				 $this.filter("span &gt; option").toggleOptionVisibility(true);
+				 $this.filter(":not(span &gt; option)").toggleOptionVisibility(false);
+			}
+		});
+	};
+
+	
+	var expandCollapseStrings = {
+		btnExpandAll: "Expand All",
+		btnCollapseAll: "Collapse All"
+	};
+
+</script>
+
+<script type="text/javascript" src="javascript/20102015419/SBMAEWindowCount.js"></script>
+
+
+
+		<!--jquery-ui.htm-->
+<link rel="stylesheet" type="text/css" href="styles/20102015419/modern_graphite/3rdparty/jquery-ui-1.9.2.custom.css" />
+
+<script type="text/javascript" src="javascript/20102015419/3rdparty/jquery-ui-1.9.2.custom.min.js"></script>
+
+<!-- jquery-ui plugins start: -->
+<link rel="stylesheet" type="text/css" href="styles/20102015419/modern_graphite/3rdparty/jquery-ui-timepicker-addon-1.5.0.css" />
+
+<script type="text/javascript" src="javascript/20102015419/3rdparty/jquery-ui-timepicker-addon-1.5.0.js"></script>
+
+<!-- jquery-ui plugins end -->
+
+		<script type="text/javascript" src="javascript/20102015419/globals.js"></script>
+
+		<script type="text/javascript">
+	// popup open variables
+	var sPageTitle = "TeamTrack - Quality Management System";
+	var sUtilityFrame = "Utility frame";
+	var sDLL = "tmtrack.dll?";
+	var sPopupBlockingWarning = "You may have a pop-up blocker running. Please make sure the blocker allows pop-ups for SBM, otherwise disable the blocker.";
+	var strMsgExistingWindow = "Existing dialog is already open for this action.";
+	var sTestFrame = "Test frame";
+</script>
+		<script type="text/javascript" src="javascript/20102015419/utilities.js"></script>
+
+		<script type="text/javascript">
+  var sSubmittableProject = "Submittable Project";
+  var sSubmittableProjectIcon = "Submittable Project Icon";
+  var sNonSubmittableProject = "Non-submittable Project";
+  var sNonSubmittableProjectIcon = "Non-submittable Project Icon";
+  var sSelectedTreeNode = "Selected Tree Node";
+  var sReloadStr = "Reload";
+  var sLoading = "Loading...";
+  var sNoDefault = "You have no Preferred Application selected. Please select one from the \"Preferred Application\" list, and click the \"Save\" button.";
+  var sBaseProjectId = "1";
+  var sNoEmed1 = "The SBM User Workspace can not be embedded in another frame.";
+  var sNoEmed2 = "Open this Frame in a separate Window.";
+  var sActions = "Actions";
+  var sRequestFailed = "Request failed. Please contact your administrator.";  
+  var sWarnHTML5 = "Some components of this form may display improperly if HTML5 features are disabled in SBM. Please contact your administrator about enabling HTML5.";
+  var sWarnHTML5Responsive = "This form relies heavily on HTML5 features, and is not usable if HTML5 is disabled in SBM. Please contact your administrator about enabling HTML5.";
+  var sSessionExpired = "Session has expired, please login again.";
+  var sNotFound = "Not Found";
+  if (typeof isModernUI === "undefined") {
+  var isModernUI = false;
+  }
+  isModernUI = true; 
+  isWorkcenter =  false; 
+  var currentTheme = "modern_graphite";
+</script>
+		<script type="text/javascript" src="javascript/20102015419/core.js"></script>
+
+		<script type="text/javascript">
+  var sHelpDir = "";
+  var sttDLL = "tmtrack.dll?";
+  var bExitAuth = false;
+  
+  var bBrowserNS = false;
+  
+  var bBrowserCachingDisabled = false;
+  
+  var sNSResizeWarn = "By default, resizing any Netscape 4.x window forces the page to reload.\nThis can be changed, but in that case specific local browser cache settings are required.\nClick OK to disable this warning locally, or Cancel to keep it in place.";
+  var sSpellCheckHover = 'alt="Click to check spelling" title="Click to check spelling"';
+  var sTitle = "TeamTrack - Quality Management System";
+  var bEnableSpellCheck = false;
+  
+  var nSearchDefaults = 0;
+
+  var strMsgPopupBlockerWarning = "You may have a pop-up blocker running. Please make sure the blocker allows pop-ups for SBM, otherwise disable the blocker.";
+  var strMsgExistingWindow = "Existing dialog is already open for this action.";
+  var emailreportTitle = "Send E-mail";
+  if (typeof isModernUI === "undefined") {
+    var isModernUI = false;
+  }
+  isModernUI = true; 
+</script>
+
+		<script type="text/javascript">
+  var sProcessingPreviousRequest = "Currently processing previous request, please wait until the request completes.";
+  var sSearching = "Searching...";
+  var dll = "tmtrack.dll?";
+  var dllsid = "tmtrack.dll?sid=shwuompv&amp;";
+  var sNoMatchingSelections = "(No Matching Selections)";
+</script>
+		<script type="text/javascript" src="javascript/20102015419/qbetop.js"></script>
+
+		<script type="text/javascript" src="javascript/20102015419/root.js"></script>
+
+		<script type="text/javascript" src="javascript/20102015419/FormInfo.js"></script>
+
+    	<script type="text/javascript" src="javascript/20102015419/3rdparty/jquery.cookie.js"></script>
+
+		<script type="text/javascript" src="javascript/20102015419/AutoLogout.js"></script>
+
+		<!-- include before kbwidget.js -->
+<script type="text/javascript">
+  var localizationKpwidget = {
+      thisarticle:'This article solves my problem',
+      yescancelsubmit:'Yes, cancel submit',
+      notext:'No',
+      closetext:'Close',
+      similararticle:'1 similar article has been found in the Knowledge Center.',
+      similararticle:'1 similar article has been found in the Knowledge Center.',
+      similararticles:' similar articles have been found in the Knowledge Center.',
+      knowledgeCenterSearch:'Knowledge Center Search',
+      Selectedarticle:'Selected article not found',
+      contentdoesnot:'Content does not support getSelectedArticle',
+      contentdoesnotCd:'Content does not support closeDlg'
+  };
+</script>
+
+    <script type="text/javascript">
+
+		  function toggleSearchText(tf) {
+			if (tf == true) {
+			  var item = document.getElementById("idsearch");
+			  if (item != null) {
+				var value = item.value;
+				if (value != null &amp;&amp; value.length != 0) {
+				  tf = false; // do not show if contains text
+				}
+			  }
+			}
+
+			var help = document.getElementById("idsearchText");
+			if (help != null) {
+			  if (tf == true) {
+				help.style.visibility = "visible";
+			  }
+			  else {
+				help.style.visibility = "hidden";
+			  }
+			}
+		  }
+
+		  function focusSearch() {
+			var item = document.getElementById("idsearch");
+			if (item != null) {
+			  item.focus();
+			}
+		  }
+
+		  function hideIFrame() {
+			if (overlay != null) {
+			  overlay.setAttribute("src", "images/jsblank.gif");
+			  overlay.style.display = "none";
+			}
+		  }
+
+		  function initQuickLinksOverlay() {
+			qlOverlay = document.createElement('iframe');
+			qlOverlay.id = 'qlOverlay';
+			qlOverlay.style.position = 'absolute';
+			qlOverlay.style.display = 'none';
+			qlOverlay.style.width = '10px';
+			qlOverlay.style.height = '10px';
+			qlOverlay.style.top = '0px';
+			qlOverlay.style.left = '0px';
+			qlOverlay.style.zIndex = '999';
+			qlOverlay.setAttribute('src', 'images/jsblank.gif');
+			var holder = document.getElementById("holder");
+			holder.appendChild(qlOverlay);
+		  }
+
+		  function initMoreOverlay() {
+			moreOverlay = document.createElement('iframe');
+			moreOverlay.id = 'moreOverlay';
+			moreOverlay.style.position = 'absolute';
+			moreOverlay.style.display = 'none';
+			moreOverlay.style.width = '10px';
+			moreOverlay.style.height = '10px';
+			moreOverlay.style.top = '0px';
+			moreOverlay.style.left = '0px';
+			moreOverlay.style.zIndex = '999';
+			moreOverlay.setAttribute('src', '');
+			var holder = document.getElementById("holder");
+			holder.appendChild(moreOverlay);
+		  }
+
+      function GetSSOToken(dllstring)
+      {
+        var token = null;
+        var tokenData;
+        var request = ((dllstring) ? dllstring : top.dll) + 'JSONPage&amp;command=getssotoken';
+
+        sbmlog.debug("Token request",arguments.callee.name,sbmlog.begin);
+        sbmlog.time("SSOTokenRequest");
+        jQuerySBM.ajax({
+          async: false,
+          url: request,
+          dataType: "json",
+          type: "GET",
+          contentType: "application/json",
+          success: function( tokenData, textStatus, jqXHR ){
+            if ( tokenData.error &amp;&amp; tokenData.error.msg )
+            {
+              sbmlog.error("Error getting token - " + tokenData.error.msg);
+            }
+            else
+            {
+              sbmlog.assert( tokenData.result.token !== "", "SSO token is empty" );
+              token = tokenData.result.token;
+            }
+            sbmlog.debug("Successfully got a token");
+          },
+          error: function( jqXHR, textStatus, errorThrown ){
+            sbmlog.error("Error getting SSO token");
+          },
+          complete: function(  jqXHR, textStatus ) {
+            sbmlog.timeEnd("SSOTokenRequest");
+            sbmlog.debug("Token request",arguments.callee.name,sbmlog.end);
+          }
+        });
+
+        return token;
+      }
+
+
+		  function initOverlay() {
+			overlay = document.createElement('iframe');
+			overlay.id = 'overlay';
+			overlay.style.position = 'absolute';
+			overlay.style.display = 'none';
+			overlay.style.width = '10px';
+			overlay.style.height = '10px';
+			overlay.style.top = '0px';
+			overlay.style.left = '0px';
+			overlay.style.zIndex = '999';
+			overlay.setAttribute('src', '');
+			var holder = document.getElementById("holder");
+			holder.appendChild(overlay);
+		  }
+
+          // Initialze after page loads
+          // use window.load instead of document.ready because Chrome resizes DOM before navbar images are done
+		  jQuerySBM(window).load(function() {
+			
+			ssoToken = GetSSOToken();
+			init();
+			initOverlay();
+			initMoreOverlay();
+			initQuickLinksOverlay();
+
+			jQuerySBM(window).resize(resizeAll);
+			resizeAll();
+		  });
+
+		  // resize it once before images are present so it doesn't bounce to full
+		  
+		  jQuerySBM(document).ready(resizeAll);
+		  
+
+      function resizeAll(){
+          resizeCalendar();
+          
+          resizeBody();
+          
+      }
+
+	  function preToggleSections(expand){
+	      toggleSections(expand);
+	      
+	      resizeBody();
+	      
+	  }
+	  function preOpenTaskPanel(obj){
+	      openTaskPanel(obj);
+	      
+	      resizeBody();
+	      
+	  }
+	  function preCollapseTaskPanel(obj){
+	      collapseTaskPanel(obj);
+	      
+	      resizeBody();
+	      
+	  }
+
+	  function resizeBody(){
+          var $window = jQuerySBM(window);
+	      var winH = $window.height() || jQuerySBM(document.body).height();
+
+	      var bodyheight = winH;
+	      jQuerySBM('html, body').css({
+	          'height': bodyheight + 'px'
+	      });
+
+	      var topNavPlusHeight = jQuerySBM('#solutionbartable').height() +
+              jQuerySBM('#BrandCell').height() +
+              jQuerySBM('#toplinksRow').height() +
+              13; /*for whitespace */
+	      var contentHeight = (bodyheight - topNavPlusHeight) * 0.95;
+
+	      jQuerySBM('#SubmitSectionRowWrap, #OpenerRowDiv, #TasksCellDiv').css('height', 0); // reset so they don't hold table height
+	      jQuerySBM('iframe[name=Home]').css('height', contentHeight); // defines height for rest of page
+	      contentHeight = jQuerySBM('#contentCell').outerHeight(); // account for .contentCell padding
+	      jQuerySBM('#OpenerRowDiv, #TasksCellDiv').css('height', contentHeight);
+
+	      var leftcalc = jQuerySBM('#TasksCellDiv #row1').height()
+                          + jQuerySBM('#TasksCellDiv #row3').height()
+                          + jQuerySBM('#TasksCellDiv #row4').height();
+
+	      jQuerySBM('#SubmitSectionRowWrap').css({
+	          'height': contentHeight- leftcalc,
+	          'overflow': 'hidden'
+	      });
+
+
+	      jQuerySBM('#moreOverlay').css({
+	          'height':'200px',
+	          'width':'200px'
+	      });
+
+
+	  }
+
+
+      function resizeCalendar(w){
+        var $window = jQuerySBM(window);
+		var winW = $window.width() || jQuerySBM(document.body).width();
+		var winH = $window.height() || jQuerySBM(document.body).height();
+        jQuerySBM('#userCalendar').css({
+          'height': winH * .98 + 'px',
+          'width':  winW * .98 + 'px',
+          'top':    winH * .01 + 'px',
+          'left':   winW * .01 + 'px'
+        });
+      }
+
+      function showCalendar(htm) {
+        jQuerySBM('#userCalendarShimDiv').show();
+        jQuerySBM('#userCalendar').show()[0].contentWindow.showCalendar(htm);
+      }
+		</script>
+		<style type="text/css">
+			#userCalendar
+			{
+				position: absolute;
+				overflow: hidden;
+				z-index: 1001;
+			}
+
+			#userCalendarShimDiv
+			{
+				background: #aaaaaa;
+				opacity: .3;
+				filter:Alpha(Opacity=30);
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				z-index: 1000;
+			}
+
+			.logoutdialog {
+				overflow: hidden;
+			}
+
+            
+            html, body { height: 100%; }
+            #solutionContentTable { height: 94%; }
+            #TasksCellDiv { height: 100%; }
+            
+		  </style>
+		  <!--[if IE]>
+			<style type="text/css">
+				.logoutDialogWrapper {
+					position: absolute;
+					top: 50% !important;
+					left: 50% !important;
+					margin-left: -150px;
+					margin-top: -100px;
+				}
+
+
+			</style>
+		  <![endif]-->
+		</head>
+	  <body class="main" onunload="if(exiting) {exiting();}" style="height: 799px;">
+		<table summary="" class="MainTable" id="MainTable" cellspacing="0" border="0" cellpadding="0" width="100%">
+      <tbody><tr id="BrandCellRow">
+        <td id="BrandCell" align="left">
+			  <a class="nounderline" href="http://www.serena.com/sbm-app-info"><img border="0" title="http://www.serena.com/sbm-app-info" src="images/shell_logo.png" alt="http://www.serena.com/sbm-app-info" /></a>
+        </td>
+			<td id="debug"> </td>
+			<td nowrap="" id="toptablecell" align="right">
+			  <table border="0" cellpadding="0" cellspacing="5" id="toptable" summary="">
+				<tbody><tr>
+
+				<td height="100%">
+					<a class="nounderline" href="javascript:userPreferences();" title="User Profile">
+                        
+                        <span class="avatarDefWrapper avatarDefFont">T</span>
+                        
+					</a>
+				</td>
+				<td nowrap="">
+					
+					  <a class="nounderline" href="javascript:userPreferences();" title="User Profile">Welcome, Tony Zhao</a>    
+					
+				</td>
+			<td><a class="nounderline" href="mailto:EDAADMIN@brocade.com" title="E-mail SBMAdmin">E-mail EDA Admin</a>  </td>
+			<td id="CMNSearch" style="display:none;"><a class="nounderline" href="tmtrack.dll?StdPage&amp;template=cmzlaunch" title="ChangeMan Application" target="Home"></a></td>
+		  
+			<td><a class="nounderline" href="javascript:showCalendar('tmtrack.dll?ReportPage&amp;Template=reports/calendar&amp;reportid=-54');" title="Show My Calendar"><img border="0" src="images/rmcal.gif" alt="Show My Calendar" /></a></td><!-- TS_QUERY_USERCALENDAR -->
+			<td><a class="nounderline" href="javascript:goHome();" title="Load the Application's Home page"><img border="0" src="images/modern_graphite/icon_home.png" alt="Load the Application's Home page" /></a></td>
+			<td><a class="nounderline" href="javascript:goSettings();" title="Application Settings"><img border="0" src="images/modern_graphite/icon_settings.png" alt="Application Settings" /></a></td>
+		  
+
+		  
+
+				  <td><a class="nounderline" href="javascript:goHelp('index.htm');"><img border="0" src="images/modern_graphite/icon_help.png" title="Help" alt="Help" /></a></td>
+				  <td><a class="nounderline" href="javascript:goAbout();"><img border="0" src="images/modern_graphite/icon_about.png" title="About" alt="About" /></a></td>
+				  <td nowrap=""><a class="nounderline" href="javascript:top.location='tmtrack.dll?LogoutPage'" id="exitButton"><img border="0" src="images/modern_graphite/icon_logout.png" title="Exit" alt="Exit" /></a></td>
+			</tr>
+		  </tbody></table>
+		</td>
+      </tr>
+
+		  <tr id="toplinksRow">
+			<td id="toplinks" colspan="3" width="100%">
+			  <table border="0" cellpadding="0" cellspacing="0" width="100%" height="30" summary="">
+				<tbody><tr>
+				  <td id="tabbarleft" class="tabbarleft"><img src="images/modern_graphite/tabbackleft.png" title="" alt="" /></td>
+				  <td id="tabsCell" class="tabbarcenter" width="100%" height="100%">
+					<!-- application tabs new -->
+					<!-- begin solution tabs-->
+
+      <table summary="" id="solutionsTable" class="solutionsTable" cellspacing="0" cellpadding="0" border="0">
+        <tbody><tr><td class="tabcellSpacer" height="80%" valign="bottom"> </td>
+<td height="80%" valign="bottom" class="tabcell" xonmouseover="makeHoverClass(this);" xonmouseout="unHoverClass(this);" id="tab8" name="tab"><a id="tab8href" class="gradientTabButton" href="javascript:tabChange('tab8', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=8')" url="tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=8" title="">Defects</a></td><td class="tabcellSpacer" height="100%" valign="bottom" solutionid="8" tableid="1052"> </td><td height="80%" valign="bottom" class="tabcellActive" xonmouseover="makeHoverClass(this);" xonmouseout="unHoverClass(this);" id="tab10" name="tab"><a id="tab10href" class="gradientTabButtonSelected" href="javascript:tabChange('tab10', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=10')" url="tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=10" title="">Defect Tracking</a></td><td class="tabcellSpacer" height="100%" valign="bottom" solutionid="10" tableid="1055"> </td><td height="80%" valign="bottom" class="tabcell" xonmouseover="makeHoverClass(this);" xonmouseout="unHoverClass(this);" id="tab12" name="tab"><a id="tab12href" class="gradientTabButton" href="javascript:tabChange('tab12', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=12')" url="tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=12" title="">Release Mgmt</a></td><td class="tabcellSpacer" height="100%" valign="bottom" solutionid="12" tableid="1060"> </td><td id="tabOverflow" class="tabcell" xonmouseover="makeHoverClass(this);" xonmouseout="unHoverClass(this);" nowrap="" valign="bottom" height="100%"><a id="solutionOverflowTrigger" class="gradientTabButton" href="javascript:showTabOverflow()" title="Show more Applications">More...</a></td><td class="tabcellSpacer" height="100%" valign="bottom"> </td><td width="0"><div id="solutionsOverflow" class="solutionsOverflow" style="display: none;"><table width="100%" summary="" id="overflowTable" class="overflowTable" border="0" cellspacing="1"><tbody><tr><td class="overflowTitleWrapper"><table summary="" cellspacing="0" width="100%"><tbody><tr><td class="overflowTitleLeft">More Applications:</td><td class="overflowTitleRight"><a id="overflowCloser" title="Close" class="nounderline" href="javascript:hideTabOverflow()"><img src="images/modern_graphite/x.gif" border="0" alt="Close" /></a></td></tr></tbody></table></td>
+</tr><tr><td tableid="1089" solutionid="19" onclick="javascript:tabChange('overflow19', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=19');" onmouseover="changeClass(this, 'overflowLinkHover');" onmouseout="changeClass(this, 'overflowLink');" colspan="2" class="overflowLink" name="overflowLink"><a id="overflow19" href="javascript:tabChange('overflow19', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=19')" url="tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=19" class="solutionsListLink" title="">Hardware Defects</a><!--overflow--></td></tr><tr><td tableid="1093" solutionid="20" onclick="javascript:tabChange('overflow20', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=20');" onmouseover="changeClass(this, 'overflowLinkHover');" onmouseout="changeClass(this, 'overflowLink');" colspan="2" class="overflowLink" name="overflowLink"><a id="overflow20" href="javascript:tabChange('overflow20', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=20')" url="tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=20" class="solutionsListLink" title="Solution for tracking Action Items">ActionItem Track</a><!--overflow--></td></tr><tr><td tableid="1000" solutionid="1" onclick="javascript:tabChange('overflow1', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=1');" onmouseover="changeClass(this, 'overflowLinkHover');" onmouseout="changeClass(this, 'overflowLink');" colspan="2" class="overflowLink" name="overflowLink"><a id="overflow1" href="javascript:tabChange('overflow1', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=1')" url="tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=1" class="solutionsListLink" title="">Master Data</a><!--overflow--></td></tr><tr><td tableid="1135" solutionid="27" onclick="javascript:tabChange('overflow27', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=27');" onmouseover="changeClass(this, 'overflowLinkHover');" onmouseout="changeClass(this, 'overflowLink');" colspan="2" class="overflowLink" name="overflowLink"><a id="overflow27" href="javascript:tabChange('overflow27', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=27')" url="tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=27" class="solutionsListLink" title="Associated with the Document Approval Workflow">Approval Tasks</a><!--overflow--></td></tr><tr><td tableid="1183" solutionid="32" onclick="javascript:tabChange('overflow32', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=32');" onmouseover="changeClass(this, 'overflowLinkHover');" onmouseout="changeClass(this, 'overflowLink');" colspan="2" class="overflowLink" name="overflowLink"><a id="overflow32" href="javascript:tabChange('overflow32', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=32')" url="tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=32" class="solutionsListLink" title="">CAT-EBC-POC</a><!--overflow--></td></tr><tr><td tableid="1193" solutionid="34" onclick="javascript:tabChange('overflow34', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=34');" onmouseover="changeClass(this, 'overflowLinkHover');" onmouseout="changeClass(this, 'overflowLink');" colspan="2" class="overflowLink" name="overflowLink"><a id="overflow34" href="javascript:tabChange('overflow34', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=34')" url="tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=34" class="solutionsListLink" title="A basic application.">Defects List</a><!--overflow--></td></tr><tr><td tableid="1134" solutionid="26" onclick="javascript:tabChange('overflow26', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=26');" onmouseover="changeClass(this, 'overflowLinkHover');" onmouseout="changeClass(this, 'overflowLink');" colspan="2" class="overflowLink" name="overflowLink"><a id="overflow26" href="javascript:tabChange('overflow26', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=26')" url="tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=26" class="solutionsListLink" title="Document Approval Primary table">Doc Approval</a><!--overflow--></td></tr><tr><td tableid="1132" solutionid="25" onclick="javascript:tabChange('overflow25', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=25');" onmouseover="changeClass(this, 'overflowLinkHover');" onmouseout="changeClass(this, 'overflowLink');" colspan="2" class="overflowLink" name="overflowLink"><a id="overflow25" href="javascript:tabChange('overflow25', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=25')" url="tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=25" class="solutionsListLink" title="Project Management for Tech Pubs">Project Requests</a><!--overflow--></td></tr><tr><td tableid="1201" solutionid="37" onclick="javascript:tabChange('overflow37', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=37');" onmouseover="changeClass(this, 'overflowLinkHover');" onmouseout="changeClass(this, 'overflowLink');" colspan="2" class="overflowLink" name="overflowLink"><a id="overflow37" href="javascript:tabChange('overflow37', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=37')" url="tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=37" class="solutionsListLink" title="">PSIR</a><!--overflow--></td></tr><tr><td tableid="1136" solutionid="28" onclick="javascript:tabChange('overflow28', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=28');" onmouseover="changeClass(this, 'overflowLinkHover');" onmouseout="changeClass(this, 'overflowLink');" colspan="2" class="overflowLink" name="overflowLink"><a id="overflow28" href="javascript:tabChange('overflow28', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=28')" url="tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=28" class="solutionsListLink" title="Workflows to track escape items that need to be root caused">RCA Tracking</a><!--overflow--></td></tr><tr><td tableid="1148" solutionid="30" onclick="javascript:tabChange('overflow30', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=30');" onmouseover="changeClass(this, 'overflowLinkHover');" onmouseout="changeClass(this, 'overflowLink');" colspan="2" class="overflowLink" name="overflowLink"><a id="overflow30" href="javascript:tabChange('overflow30', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=30')" url="tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=30" class="solutionsListLink" title="A basic application.">RFE</a><!--overflow--></td></tr><tr><td tableid="1197" solutionid="36" onclick="javascript:tabChange('overflow36', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=36');" onmouseover="changeClass(this, 'overflowLinkHover');" onmouseout="changeClass(this, 'overflowLink');" colspan="2" class="overflowLink" name="overflowLink"><a id="overflow36" href="javascript:tabChange('overflow36', 'tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=36')" url="tmtrack.dll?StdPage&amp;Template=reports%2Flistframe&amp;solutionid=36" class="solutionsListLink" title="A basic application.">SIR</a><!--overflow--></td></tr><tr><td onclick="javascript:userPreferences(1);" onmouseover="changeClass(this, overflowLinkHover);" onmouseout="changeClass(this, overflowLink);" colspan="2" class="overflowLink" name="overflowLink"><a href="javascript:userPreferences(1);" class="solutionsListLink">Manage Tabs...</a></td></tr></tbody></table>
+</div>
+</td>
+  </tr>
+</tbody></table>
+<!-- end solution tabs-->
+
+				  </td>
+				  <td id="tabbarright" class="tabbarright"><img src="images/modern_graphite/tabbackright.png" title="" alt="" /></td>
+				</tr>
+			  </tbody></table>
+			</td>
+		  </tr>
+
+      <tr id="MiddleRow" height="100%">
+          <td colspan="3" valign="top" align="top">
+              <table summary="" class="solutionContent" width="100%" height="1px" cellspacing="0" cellpadding="0" border="0" id="solutionContentTable">
+
+
+                  <tbody><tr id="topperRow" style="display:none">
+                      <td width="100%" colspan="3">
+                          <table cellpadding="0" cellspacing="0" border="0" id="Table30" width="100%" class="solutionbartable" summary="">
+                              <tbody><tr>
+                                  <td class="NW3"><img border="0" src="images/space2.gif" height="4" width="4" title="" alt="" /></td>
+                                  <td width="100%" align="center"><img src="images/space2.gif" height="4" title="" alt="" /></td>
+                                  <td class="NE3"><img border="0" src="images/space2.gif" height="4" width="4" title="" alt="" /></td>
+                              </tr>
+                          </tbody></table>
+                      </td>
+                  </tr>
+
+                  <tr>
+                      <td id="solutionbar" align="left" valign="top" width="100%" colspan="3">
+                          <table summary="" id="solutionbartable" class="solutionbartable" width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+                              <tbody><tr>
+                                  <td colspan="7" style="font-size:4px" height="4"> </td>
+                              </tr>
+                              <tr>
+
+                              <td id="brocadebar" width="20%" height="10">
+							  						  <table border="0" cellpadding="0" cellspacing="0" width="100%" height="20" summary="">
+							  						<tbody><tr height="10">
+							  						<td><a class="nounderline" href="javascript:goHome();" title="Home">Home</a>  </td>
+							  						<td><a class="nounderline" href="javascript:expandTheSection('Submit', 'submit', false); autoSubmitOneProject();" title="Submit">Submit</a>  </td>
+							  						<td><a class="nounderline" href="javascript:expandTheSection('Search', 'search', false);" title="Search">Search</a>  </td>
+							  						<td><a class="nounderline" href="javascript:expandTheSection('Reports', 'report', false);" title="Reports">Reports</a>  </td>
+							  						<td><a class="nounderline" href="javascript:goSettings();" title="Settings">Settings</a>  </td>
+							  						</tr>
+							  						  </tbody></table>
+							</td>
+                                  <td nowrap="" height="100%">
+                                        
+                                  </td>
+
+                                  <td id="idsearchcol" nowrap="" align="left" valign="middle">
+                                      <table cellpadding="0" cellspacing="0" border="0" id="idsearchtable" summary="">
+                                          
+                                          
+                                          <tbody><tr>
+                                              <td class="W9"><img src="images/space2.gif" height="4" title="" alt="" /></td>
+                                              <td nowrap="" width="100%" height="100%" valign="middle">
+                                                  <table height="100%" cellpadding="0" cellspacing="0" border="0" summary="">
+                                                      <tbody><tr>
+                                                          <td height="100%" bgcolor="white">
+                                                              <div style="position: relative; top: 0px; left: 0px;">
+                                                                  <div id="idsearchText" onmousedown="setTimeout(focusSearch, 10);return false;" style="position: absolute; top: 2px; left: 5px; white-space: nowrap; color: gray; visibility: visible;">ID Search...</div>
+                                                              </div>
+                                                              <form class="ideasearchform" name="idSearchForm" action="tmtrack.dll?FindForm" method="post" target="Home" id="idSearchForm">
+                                                                  <input name="incsub" type="hidden" value="1" id="Hidden1" />
+                                                                  <input name="options" type="hidden" value="1" id="Hidden2" />
+                                                                  <input name="Target" type="hidden" value="QuickIdSearch" id="Hidden3" />
+                                                                  <input name="TableId" type="hidden" value="-111" id="Hidden4" />
+                                                                  <input name="SearchTID" type="hidden" id="Hidden9" value="1055" />
+                                                                  <input name="SolutionId" type="hidden" value="1" id="Hidden5" />
+                                                                  <input name="Keywords" type="text" onfocus="idsearchFocus=true;toggleSearchText(false);var self=this;setTimeout(function(){self.select();},0);" onblur="idsearchFocus=false;toggleSearchText(true)" onkeypress="goSearch(event)" class="logininputField" size="16" id="idsearch" title="Search the current Application for an item ID" value="" />
+                                                              </form>
+                                                          </td>
+                                                          <td height="100%" bgcolor="white">
+                                                              <a class="nounderline" href="javascript:goSearch();" title="Execute ID Search"><img border="0" src="images/modern_graphite/searchgo.gif" alt="Execute ID Search" /></a>
+                                                          </td>
+                                                      </tr>
+                                                  </tbody></table>
+                                              </td>
+                                              <td class="E9"><img src="images/space2.gif" height="4" title="" alt="" /></td>
+                                          </tr>
+                                          
+                                          
+                                      </tbody></table>
+                                  </td>
+
+                                  <td nowrap="" width="100%" valign="middle" align="center">
+                                  </td>
+
+                                  <td height="100%" nowrap="" class="solution" align="right" valign="middle">
+
+                                      <table cellpadding="0" cellspacing="0" border="0" id="Table20" summary="">
+
+                                          
+                                          
+                                          <tbody><tr>
+                                              <td class="W9"><img src="images/space2.gif" height="4" title="" alt="" /></td>
+                                              <td bgcolor="white">
+                                                  <div id="quicklinksdiv" style="z-index: 1000; cursor: default;">
+                                                      <table cellpadding="0" cellspacing="0" width="200" id="quicklinksOpener" summary="">
+                                                          <tbody><tr>
+                                                              <td id="qltd" nowrap="" width="100%" valign="middle" class="quickLinksHeader" onmousedown="javascript:openQuickLinks(1);return true;">Quick Links:</td>
+                                                              <td>
+                                                                  <a class="nounderline" href="javascript:openQuickLinks();" title="Quick Links from your &quot;Links&quot; Favorites Folder"><img border="0" src="images/modern_graphite/dropdownopen.gif" alt="Quick Links from your &quot;Links&quot; Favorites Folder" /></a>
+                                                              </td>
+                                                          </tr>
+                                                      </tbody></table>
+                                                  </div>
+                                                  <div id="quicklinksOverflow" class="quicklinksOverflow" style="display:none"></div>
+                                              </td>
+                                              <td class="E9"><img src="images/space2.gif" height="4" title="" alt="" /></td>
+                                          </tr>
+                                          
+                                          
+                                      </tbody></table>
+
+
+                                  </td>
+                                  <td height="100%" nowrap="">
+                                          
+                                      
+                                      <a class="nounderline" href="javascript:captureFavorite(true)" title="Add link directly to your Quick Links folder"><img border="0" src="images/modern_graphite/addql.gif" alt="Add link directly to your Quick Links folder" /></a>    <a class="nounderline" href="javascript:captureFavorite()" title="Add the content below to your Favorites folders"><img border="0" src="images/modern_graphite/addfav.gif" alt="Add the content below to your Favorites folders" /></a>
+                                      
+                                  </td>
+                                  <td>   </td>
+                              </tr>
+
+                              <tr>
+                                  <td align="left" valign="bottom" class="SW3"></td>
+                                  <td colspan="5" style="font-size:4px" height="4"> </td>
+                                  <td align="right" valign="bottom" class="SE3" colspan="3"></td>
+                              </tr>
+                          </tbody></table>
+                      </td>
+                  </tr>
+
+                  <tr>
+                      <td height="100%">
+                          <table summary="" width="100%" height="100%" cellspacing="0" cellpadding="0" border="0" id="Table34">
+
+                              <tbody><tr>
+                                  <td colspan="3" width="100%" height="5"><img src="images/space2.gif" width="5" height="5" title="" alt="" /></td>
+                              </tr>
+
+                              <tr>
+                                  <td id="openerRow" style="display:none" valign="top" height="100%">
+                                    <div id="OpenerRowDiv" style="height: 657px;">
+                                      <table class="navpanecell" border="0" cellspacing="0" cellpadding="0" id="navpanecell" width="100%" height="100%" summary="">
+                                          <tbody><tr>
+
+                                              <!-- NW -->
+                                              <td class="NW1" align="left" valign="top">
+                                              </td>
+
+                                              <!-- N -->
+                                              <td class="N1" align="center" valign="top">
+                                                  <a id="openerHref" class="nounderline" href="javascript:preOpenTaskPanel(tasksTable)">
+                                                      <img border="0" src="images/modern_graphite/frame_open.gif" title="Open Navigation Pane" alt="Open Navigation Pane" />
+                                                  </a>
+                                              </td>
+
+                                              <!-- NE -->
+                                              <td class="NE1" valign="top" align="right">
+                                          </td></tr>
+
+                                          <tr id="row2">
+
+                                              <!-- W -->
+                                              <td class="W3" id="W" height="100%" align="left" valign="top">
+                                                  <img src="images/space2.gif" width="4" title="" alt="" />
+                                              </td>
+
+                                              <!-- C -->
+                                              <td width="100%" height="100%" class="C3" valign="bottom">
+                                              </td>
+
+                                              <!-- E -->
+                                              <td class="E3" id="E" height="100%">
+                                                  <img src="images/space2.gif" width="4" title="" alt="" />
+                                              </td>
+                                          </tr>
+
+                                          <tr id="row3">
+                                              <!-- SW -->
+                                              <td class="SW1" id="SW">
+                                                  <img src="images/space2.gif" width="4" title="" alt="" />
+                                              </td>
+                                              <!-- S -->
+                                              <td class="S1" id="S">
+                                                  <img src="images/space2.gif" height="4" title="" alt="" />
+                                              </td>
+                                              <!-- SE -->
+                                              <td class="SE1" id="SE">
+                                                  <img src="images/space2.gif" width="4" title="" alt="" />
+                                              </td>
+                                          </tr>
+
+                                          <tr><td colspan="3"><img src="images/space2.gif" height="4" title="" alt="" /></td></tr>
+
+                                          <tr>
+                                              <td valign="bottom" width="100%" colspan="3">
+                                                  <table summary="" width="100%" border="0" cellpadding="0" cellspacing="0" class="stacktable" id="Table21">
+
+                                                      <!-- Submit -->
+                                                      <tbody><tr>
+                                                          <td valign="middle" width="100%" height="100%" class="sectionDiv" onmouseover="stack_submit_expander.src='images/modern_graphite/submit_icon_hover.gif';" onmouseout="stack_submit_expander.src='images/modern_graphite/submit_icon.gif';" onclick="javascript:expandSection('Submit', document.getElementById('submit'), true, false, true);">
+                                                              <table border="0" cellpadding="0" cellspacing="0" width="100%" id="Table24" summary="">
+                                                                  <tbody><tr>
+                                                                      
+                                                                      
+                                                                      <td class="sec_body" width="100%" align="center"><img id="stack_submit_expander" name="expander" src="images/modern_graphite/submit_icon.gif" border="0" title="Submit" alt="Submit" /></td>
+                                                                      
+                                                                      
+                                                                  </tr>
+                                                              </tbody></table>
+                                                          </td>
+                                                      </tr>
+
+                                                      <tr><td class="sec_spacer"> </td></tr>
+
+                                                      <!-- Search -->
+                                                      <tr>
+                                                          <td valign="middle" width="100%" height="100%" class="sectionDiv" onmouseover="stack_search_expander.src='images/modern_graphite/search_icon_hover.gif';" onmouseout="stack_search_expander.src='images/modern_graphite/search_icon_classic.gif';" onclick="javascript:expandTheSection('Search', 'search', false);">
+                                                              <table border="0" cellpadding="0" cellspacing="0" width="100%" id="Table25" summary="">
+                                                                  <tbody><tr>
+                                                                      
+                                                                      
+                                                                      <td class="sec_body" width="100%" align="center"><img id="stack_search_expander" name="expander" src="images/modern_graphite/search_icon_classic.gif" border="0" title="Search" alt="Search" /></td>
+                                                                      
+                                                                      
+                                                                  </tr>
+                                                              </tbody></table>
+                                                          </td>
+                                                      </tr>
+
+                                                      <tr><td class="sec_spacer"> </td></tr>
+
+                                                      <!-- Reports -->
+                                                      <tr>
+                                                          <td valign="middle" width="100%" height="100%" class="sectionDiv" onmouseover="stack_report_expander.src='images/modern_graphite/reports_icon_hover.gif';" onmouseout="stack_report_expander.src='images/modern_graphite/reports_icon.gif';" onclick="javascript:expandTheSection('Reports', 'report', false);">
+                                                              <table border="0" cellpadding="0" cellspacing="0" width="100%" id="Table26" summary="">
+                                                                  <tbody><tr>
+                                                                      
+                                                                      
+                                                                      <td class="sec_body" width="100%" align="center"><img id="stack_report_expander" name="expander" src="images/modern_graphite/reports_icon.gif" border="0" title="Reports" alt="Reports" /></td>
+                                                                      
+                                                                      
+                                                                  </tr>
+                                                              </tbody></table>
+                                                          </td>
+                                                      </tr>
+
+                                                      
+
+                                                      <tr><td class="sec_spacer"> </td></tr>
+
+                                                      <!-- Favorites -->
+                                                      <tr>
+                                                          <td width="100%" height="100%" class="sectionDiv" onmouseover="stack_favorites_expander.src='images/modern_graphite/favorites_icon_hover.gif';" onmouseout="stack_favorites_expander.src='images/modern_graphite/favorites_icon.gif';" onclick="javascript:expandTheSection('Favorites', 'favorites', false);">
+                                                              <table border="0" cellpadding="0" cellspacing="0" width="100%" id="Table27" summary="">
+                                                                  <tbody><tr>
+                                                                      
+                                                                      
+                                                                      <td class="sec_body" width="100%" align="center"><img id="stack_favorites_expander" name="expander" src="images/modern_graphite/favorites_icon.gif" border="0" title="Favorites" alt="Favorites" /></td>
+                                                                      
+                                                                      
+                                                                  </tr>
+                                                              </tbody></table>
+                                                          </td>
+                                                      </tr>
+
+                                                      
+
+                                                      <tr><td class="sec_spacer"> </td></tr>
+
+                                                      <!-- Public Folders -->
+                                                      <tr>
+                                                          <td width="100%" height="100%" class="sectionDiv" onmouseover="stack_public_expander.src='images/modern_graphite/public_icon_hover.gif';" onmouseout="stack_public_expander.src='images/modern_graphite/public_icon.gif';" onclick="javascript:expandTheSection('Public Folders', 'public', false);">
+                                                              <table border="0" cellpadding="0" cellspacing="0" width="100%" id="Table28" summary="">
+                                                                  <tbody><tr>
+                                                                      
+                                                                      
+                                                                      <td class="sec_body" width="100%" align="center"><img id="stack_public_expander" name="expander" src="images/modern_graphite/public_icon.gif" border="0" title="Public Folders" alt="Public Folders" /></td>
+                                                                      
+                                                                      
+                                                                  </tr>
+                                                              </tbody></table>
+                                                          </td>
+                                                      </tr>
+                                                      
+                                                      
+
+                                                      
+                                                  </tbody></table>
+                                              </td>
+                                          </tr>
+                                      </tbody></table>
+                                    </div>
+                                  </td>
+
+                                  <td id="TasksCell" valign="top" width="250" height="100%" style="cursor: default;">
+                                      <div id="TasksCellDiv" height="100%" style="height: 657px;">
+                                          <table class="navpanecell" border="0" cellspacing="0" cellpadding="0" id="Table16" width="100%" height="100%" summary="">
+                                              <tbody><tr id="row1">
+
+                                                  <!-- NW -->
+                                                  <td class="NW1" align="left" valign="top">
+                                                  </td>
+
+                                                  <!-- N -->
+                                                  <td class="N1" align="left" valign="top">
+                                                      <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" id="Table2" summary="">
+                                                          <tbody><tr id="closerRow">
+                                                              <td height="100%">
+                                                                  <table summary="" id="Table17" border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+                                                                      <tbody><tr name="taskRow" id="current_row">
+                                                                          <td colspan="4" width="100%">
+                                                                              <table summary="" width="100%" border="0" cellpadding="0" cellspacing="0" id="Table18">
+                                                                                  <tbody><tr>
+                                                                                      <td class="rttl3" valign="middle" width="100%" id="currentSectionDiv" nowrap="">Submit</td>
+                                                                                      <td class="sectionsTitle" valign="middle" align="right">
+                                                                                          <a id="closerHref" class="nounderline" href="javascript:preCollapseTaskPanel(tasksTable)"><img id="closer" border="0" src="images/modern_graphite/frame_close.gif" title="Collapse Navigation Pane" alt="Collapse Navigation Pane" /></a>
+                                                                                      </td>
+                                                                                  </tr>
+                                                                              </tbody></table>
+                                                                          </td>
+                                                                      </tr>
+                                                                  </tbody></table>
+                                                              </td>
+                                                          </tr>
+                                                      </tbody></table>
+                                                  </td>
+
+                                                  <!-- NE -->
+                                                  <td class="NE1" valign="top" align="right">
+
+                                              </td></tr>
+
+                                              <tr id="row2">
+
+                                                  <!-- W -->
+                                                  <td class="W1" id="W" height="100%" align="left" valign="top">
+                                                      <img src="images/modern_graphite/W1.gif" title="" alt="" />
+                                                  </td>
+
+                                                  <!-- C -->
+                                                  <td id="C" width="100%" height="100%" valign="top">
+                                                    <div id="SubmitSectionRowWrap" style="height: 565px; overflow: hidden;">
+                                                      <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" id="Table1" summary="">
+                                                          <tbody><tr>
+                                                              <td height="100%" bgcolor="white">
+                                                                  <table summary="" class="tasksTable" id="tasksTable" border="0" cellpadding="0" cellspacing="0" width="250" height="100%">
+                                                                      <tbody><tr style="display: table-row;" id="submit_section_row" name="section">
+                                                                          <td class="sectionDataCell" colspan="3" width="100%" height="100%">
+                                                                              <table summary="" width="100%" height="100%" class="sectionDataTable" cellpadding="0" cellspacing="0" id="Table3">
+                                                                                  <tbody><tr>
+                                                                                      <td width="100%"><table summary="" width="100%" id="submit_toolbarTable" name="toolbar" class="toolbarTable" cellpadding="0" cellspacing="0" border="0">
+  <tbody><tr>
+    <td class="toolbarCell" width="100%">
+      <img class="toolbarIcon" alt="spacer" src="images/toolbar_spacer.gif" title="spacer" />
+    </td>
+    <td class="toolbarCell">
+      <a class="toolbarlink" href="javascript:goHelp('submitview.htm');"><img onblur="changeClass(this, 'toolbarIcon');" class="toolbarIcon" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Show Help for this Section" title="Show Help for this Section" src="images/tree_help.gif" /></a>
+    </td>
+  </tr>
+</tbody></table>
+
+</td>
+                                                                                  </tr>
+                                                                                  <tr>
+                                                                                      <td id="sectionDataWrapper" class="sectionDataWrapper" width="100%" height="100%">
+                                                                                          <iframe title="Submit Section frame" class="sectionDataFrame" name="submit_sectionDataFrame" width="100%" height="100%" src="images/jsblank.gif" marginwidth="4" marginheight="0"></iframe>
+                                                                                      </td>
+                                                                                  </tr>
+                                                                              </tbody></table>
+                                                                          </td>
+                                                                      </tr>
+
+                                                                      <tr style="display:none" id="search_section_row" name="section">
+                                                                          <td class="sectionDataCell" colspan="4" width="100%" height="100%">
+                                                                              <table summary="" width="100%" height="100%" class="sectionDataTable" border="0" cellpadding="0" cellspacing="0" id="Table4">
+                                                                                  <tbody><tr>
+                                                                                      <td width="100%"><table summary="" width="100%" id="search_toolbarTable" name="toolbar" class="toolbarTable" cellpadding="0" cellspacing="0" border="0">
+  <tbody><tr>
+    <td class="toolbarCell" width="100%">
+      <img class="toolbarIcon" alt="spacer" src="images/toolbar_spacer.gif" title="spacer" />
+    </td>
+    <td class="toolbarCell">
+      <a class="toolbarlink" href="javascript:goHelp('searchview.htm');"><img onblur="changeClass(this, 'toolbarIcon');" class="toolbarIcon" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Show Help for this Section" title="Show Help for this Section" src="images/tree_help.gif" /></a>
+    </td>
+  </tr>
+</tbody></table>
+
+</td>
+                                                                                  </tr>
+                                                                                  <tr>
+                                                                                      <td id="sectionDataWrapper" class="sectionDataWrapper" width="100%" height="100%">
+                                                                                          <iframe title="Search Section frame" class="sectionDataFrame" name="search_sectionDataFrame" width="100%" height="100%" src="images/jsblank.gif" marginwidth="4" marginheight="0"></iframe>
+                                                                                      </td>
+                                                                                  </tr>
+                                                                              </tbody></table>
+                                                                          </td>
+                                                                      </tr>
+
+                                                                      <tr style="display:none" id="report_section_row" name="section">
+                                                                          <td class="sectionDataCell" colspan="4" width="100%" height="100%">
+                                                                              <table summary="" width="100%" height="100%" class="sectionDataTable" border="0" cellpadding="0" cellspacing="0" id="Table5">
+                                                                                  <tbody><tr>
+                                                                                      <td width="100%"><table summary="" width="100%" id="report_toolbarTable" name="toolbar" class="toolbarTable" cellpadding="0" cellspacing="0" border="0">
+  <tbody><tr>
+    <td class="toolbarCell" width="100%">
+      <img class="toolbarIcon" alt="spacer" src="images/toolbar_spacer.gif" title="spacer" />
+    </td>
+    <td class="toolbarCell">
+      <a class="toolbarlink" href="javascript:goHelp('reportview.htm');"><img onblur="changeClass(this, 'toolbarIcon');" class="toolbarIcon" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Show Help for this Section" title="Show Help for this Section" src="images/tree_help.gif" /></a>
+    </td>
+  </tr>
+</tbody></table>
+
+</td>
+                                                                                  </tr>
+                                                                                  <tr>
+                                                                                      <td id="sectionDataWrapper" class="sectionDataWrapper" width="100%" height="100%">
+                                                                                          <iframe title="Reports Section frame" class="sectionDataFrame" name="report_sectionDataFrame" width="100%" height="100%" src="images/jsblank.gif" marginwidth="4" marginheight="0"></iframe>
+                                                                                      </td>
+                                                                                  </tr>
+                                                                              </tbody></table>
+                                                                          </td>
+                                                                      </tr>
+
+                                                                      <tr style="display:none" id="favorites_section_row" name="section">
+                                                                          <td class="sectionDataCell" colspan="4" width="100%" height="100%">
+                                                                              <table summary="" width="100%" height="100%" class="sectionDataTable" border="0" cellpadding="0" cellspacing="0" id="Table6">
+                                                                                  <tbody><tr>
+                                                                                      <td width="100%" class="toolbarTable">      <a class="toolbarlink" href="javascript:addFolder();"><img class="toolbarIcon" onblur="changeClass(this, 'toolbarIcon');" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Add New Folder" title="Add New Folder" src="images/tree_new_folder.gif" /></a>
+      <a class="toolbarlink" href="javascript:deleteNode();"><img class="toolbarIcon" onblur="changeClass(this, 'toolbarIcon');" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Delete Folder or Link" title="Delete Folder or Link" src="images/tree_delete.gif" /></a>
+      <a class="toolbarlink" href="javascript:renameFolder();"><img class="toolbarIcon" onblur="changeClass(this, 'toolbarIcon');" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Rename Folder or Link" title="Rename Folder or Link" src="images/tree_rename.gif" /></a>
+      <a class="toolbarlink" href="javascript:viewFolder();"><img class="toolbarIcon" onblur="changeClass(this, 'toolbarIcon');" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="View Folder Content" title="View Folder Content" src="images/tree_view.gif" /></a>
+      <a class="toolbarlink" href="javascript:cutFolder();"><img class="toolbarIcon" onblur="changeClass(this, 'toolbarIcon');" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Cut Folder or Link" title="Cut Folder or Link" src="images/tree_cut.gif" /></a>
+      <a class="toolbarlink" href="javascript:pasteFolder();"><img class="toolbarIcon" onblur="changeClass(this, 'toolbarIcon');" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Paste Folder or Link" title="Paste Folder or Link" src="images/tree_paste.gif" /></a>
+      <a class="toolbarlink" href="javascript:addURL();"><img class="toolbarIcon" onblur="changeClass(this, 'toolbarIcon');" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Add URL" title="Add URL" src="images/tree_addurl.gif" /></a>
+      <a class="toolbarlink" href="javascript:selectTopFolder();"><img onblur="changeClass(this, 'toolbarIcon');" class="toolbarIcon" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Select Top Folder" title="Select Top Folder" src="images/tree_topfolder.gif" /></a>
+      <a class="toolbarlink" href="javascript:saveFolderExpansion();"><img onblur="changeClass(this, 'toolbarIcon');" class="toolbarIcon" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Save Folder expansion" title="Save Folder expansion" src="images/tree_save.gif" /></a>
+      <a class="toolbarlink" href="javascript:goHelp('favoritesview.htm');"><img onblur="changeClass(this, 'toolbarIcon');" class="toolbarIcon" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Show Help for this Section" title="Show Help for this Section" src="images/tree_help.gif" /></a>
+      <a class="toolbarlink" href="javascript:refreshFolder(false);"><img onblur="changeClass(this, 'toolbarIcon');" class="toolbarIcon" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Refresh Folder" title="Refresh Folder" src="images/tree_refresh.gif" /></a>
+
+</td>
+                                                                                  </tr>
+                                                                                  <tr>
+                                                                                      <td id="sectionDataWrapper" class="sectionDataWrapper" width="100%" height="100%">
+                                                                                          <iframe title="Favorites Section frame" class="sectionDataFrame" name="favorites_sectionDataFrame" width="100%" height="100%" src="images/jsblank.gif" marginwidth="4" marginheight="0"></iframe>
+                                                                                      </td>
+                                                                                  </tr>
+                                                                              </tbody></table>
+                                                                          </td>
+                                                                      </tr>
+
+                                                                      <tr style="display:none" id="public_section_row" name="section">
+                                                                          <td class="sectionDataCell" colspan="4" width="100%" height="100%">
+                                                                              <table summary="" width="100%" height="100%" class="sectionDataTable" border="0" cellpadding="0" cellspacing="0" id="Table7">
+                                                                                  <tbody><tr>
+                                                                                      <td width="100%"><table summary="" width="100%" id="public_toolbarTable" name="toolbar" class="toolbarTable" cellpadding="0" cellspacing="0" border="0">
+  <tbody><tr>
+    <td class="toolbarCell">
+      <a class="toolbarlink" href="javascript:viewFolder();"><img class="toolbarIcon" onblur="changeClass(this, 'toolbarIcon');" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="View Folder Content" title="View Folder Content" src="images/tree_view.gif" /></a>
+    </td>
+    <td class="toolbarCell">
+      <a class="toolbarlink" href="javascript:selectTopFolder();"><img onblur="changeClass(this, 'toolbarIcon');" class="toolbarIcon" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Select Top Folder" title="Select Top Folder" src="images/tree_topfolder.gif" /></a>
+    </td>
+    <td class="toolbarCell" width="100%">
+      <img class="toolbarIcon" alt="spacer" src="images/toolbar_spacer.gif" title="spacer" />
+    </td>
+    <td class="toolbarCell">
+      <a class="toolbarlink" href="javascript:goHelp('publicfoldersview.htm');"><img onblur="changeClass(this, 'toolbarIcon');" class="toolbarIcon" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Show Help for this Section" title="Show Help for this Section" src="images/tree_help.gif" /></a>
+    </td>
+    <td class="toolbarCell">
+      <a class="toolbarlink" href="javascript:refreshFolder(false);"><img onblur="changeClass(this, 'toolbarIcon');" class="toolbarIcon" onmouseover="changeClass(this, 'toolbarIconHover');" onmouseout="changeClass(this, 'toolbarIcon');" alt="Refresh Folder" title="Refresh Folder" src="images/tree_refresh.gif" /></a>
+    </td>
+  </tr>
+</tbody></table>
+
+</td>
+                                                                                  </tr>
+                                                                                  <tr>
+                                                                                      <td id="sectionDataWrapper" class="sectionDataWrapper" width="100%" height="100%">
+                                                                                          <iframe title="Public Folders Section frame" class="sectionDataFrame" name="public_sectionDataFrame" width="100%" height="100%" src="images/jsblank.gif" marginwidth="4" marginheight="0"></iframe>
+                                                                                      </td>
+                                                                                  </tr>
+                                                                              </tbody></table>
+                                                                          </td>
+                                                                      </tr>
+
+                                                                      
+
+                                                                  </tbody></table>
+                                                              </td>
+                                                          </tr>
+                                                      </tbody></table>
+                                                    </div>
+                                                  </td>
+
+                                                  <!-- E -->
+                                                  <td class="E1" id="E" height="100%">
+                                                      <img src="images/modern_graphite/E1.gif" title="" alt="" />
+                                                  </td>
+                                              </tr>
+
+
+                                              <tr id="row3">
+
+                                                  <!-- SW -->
+                                                  <td class="SW1" id="SW">
+                                                  </td>
+
+                                                  <!-- S -->
+                                                  <td class="S1" id="S">
+                                                      <!-- collapseable divider -->
+                                                      <table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" id="Table19" summary="">
+                                                          <tbody><tr>
+                                                              <td width="25%" valign="middle" nowrap="" id="sectionDividerCellLeft">
+                                                                  <a class="nounderline" href="javascript:decrease(true);" title="Click and hold to narrow Navigation Pane"><img onmousedown="javascript:startincrease(this,'images/modern_graphite/frame_decrease_hover.gif');javascript:decrease(false);" onmouseup="javascript:stopincrease(this,'images/modern_graphite/frame_decrease.gif');" onmouseout="javascript:stopincrease(this,'images/modern_graphite/frame_decrease.gif', true);" onmouseleave="javascript:stopincrease(this,'images/modern_graphite/frame_decrease.gif', true);" ondblclick="javascript:stopincrease(this,'images/modern_graphite/frame_decrease.gif', true);" ondragstart="return false" id="Img1" border="0" src="images/modern_graphite/frame_decrease.gif" alt="Click and hold to narrow Navigation Pane" /></a><a class="nounderline" href="javascript:increase(true);" title="Click and hold to widen Navigation Pane"><img onmousedown="javascript:startincrease(this,'images/modern_graphite/frame_increase_hover.gif');javascript:increase(false);" onmouseup="javascript:stopincrease(this, 'images/modern_graphite/frame_increase.gif');" onmouseout="javascript:stopincrease(this, 'images/modern_graphite/frame_increase.gif', true);" onmouseleave="javascript:stopincrease(this, 'images/modern_graphite/frame_increase.gif', true);" ondblclick="javascript:stopincrease(this,'images/modern_graphite/frame_increase.gif', true);" ondragstart="return false" id="Img2" border="0" src="images/modern_graphite/frame_increase.gif" alt="Click and hold to widen Navigation Pane" /></a>
+																  
+																  
+                                                              </td>
+                                                              <td width="50%" id="sectionDividerCell">
+                                                                  <div align="center" id="sectionsCollapse">
+                                                                      <a class="nounderline" href="javascript:preToggleSections(true);">
+                                                                          <img border="0" id="sectionExpanderHandle" alt="toggle expansion of sections" title="toggle expansion of sections" src="images/modern_graphite/collapse_sections.gif" style="display: none;" /></a>
+                                                                      <a class="nounderline" href="javascript:preToggleSections(false);">
+                                                                          <img border="0" id="sectionCollapserHandle" alt="toggle expansion of sections" title="toggle expansion of sections" src="images/modern_graphite/expand_sections.gif" /></a>
+                                                                  </div>
+                                                              </td>
+                                                              <td id="sectionDividerCellRight">
+                                                                  <img width="25%" height="16" border="0" src="images/space2.gif" alt="" title="" />
+                                                              </td>
+                                                          </tr>
+                                                      </tbody></table>
+                                                  </td>
+
+                                                  <!-- SE -->
+                                                  <td class="SE1" id="SE">
+                                                  </td>
+                                              </tr>
+
+                                              <!-- full section buttons -->
+                                              <tr id="row4">
+                                                  <td id="sections" colspan="3" width="100%" style="border-top-width: 4px; border-top-style: solid; border-top-color: white; display: none;">
+                                                      <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+
+                                                          <!-- Submit -->
+                                                          <tbody><tr name="taskRow" id="submit_row" expand="true">
+                                                              <td valign="middle" width="100%" height="100%" id="submit" class="sectionDiv" onmouseover="submit_expander.src='images/modern_graphite/submit_icon_hover.gif';" onmouseout="submit_expander.src='images/modern_graphite/submit_icon.gif';" onclick="javascript:expandSection('Submit', this);">
+                                                                  <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="">
+                                                                      <tbody><tr>
+                                                                          
+                                                                          
+                                                                          <td class="sec_body"><img id="submit_expander" name="expander" src="images/modern_graphite/submit_icon.gif" border="0" title="Submit" alt="Submit" /></td>
+                                                                          <td class="sec_body" width="100%"><a id="submit_link" class="sectionlink2" title="Submit" href="javascript:expandSection('Submit', this);">Submit</a></td>
+                                                                          
+                                                                          
+                                                                      </tr>
+                                                                  </tbody></table>
+                                                              </td>
+                                                          </tr>
+
+                                                          <tr><td class="sec_spacer"> </td></tr>
+
+                                                          <!-- Search -->
+                                                          <tr name="taskRow" id="search_row" expand="true">
+                                                              <td valign="middle" width="100%" height="100%" id="search" class="sectionDiv" onmouseover="search_expander.src='images/modern_graphite/search_icon_hover.gif';" onmouseout="search_expander.src='images/modern_graphite/search_icon_classic.gif';" onclick="javascript:expandSection('Search', this);">
+                                                                  <table border="0" cellpadding="0" cellspacing="0" width="100%" id="Table9" summary="">
+                                                                      <tbody><tr>
+                                                                          
+                                                                          
+                                                                          <td class="sec_body"><img id="search_expander" name="expander" src="images/modern_graphite/search_icon_classic.gif" border="0" title="Search" alt="Search" /></td>
+                                                                          <td class="sec_body" width="100%"><a id="search_link" class="sectionlink2" title="Search" href="javascript:expandSection('Search', this);">Search</a></td>
+                                                                          
+                                                                          
+                                                                      </tr>
+                                                                  </tbody></table>
+                                                              </td>
+                                                          </tr>
+
+                                                          <tr><td class="sec_spacer"> </td></tr>
+
+                                                          <!-- Reports -->
+                                                          <tr name="taskRow" id="report_row" expand="true">
+                                                              <td valign="middle" width="100%" height="100%" id="report" class="sectionDiv" onmouseover="report_expander.src='images/modern_graphite/reports_icon_hover.gif';" onmouseout="report_expander.src='images/modern_graphite/reports_icon.gif';" onclick="javascript:expandSection('Reports', this);">
+                                                                  <table border="0" cellpadding="0" cellspacing="0" width="100%" id="Table10" summary="">
+                                                                      <tbody><tr>
+                                                                          
+                                                                          
+                                                                          <td class="sec_body"><img id="report_expander" name="expander" src="images/modern_graphite/reports_icon.gif" border="0" title="Reports" alt="Reports" /></td>
+                                                                          <td class="sec_body" width="100%"><a id="report_link" class="sectionlink2" title="Reports" href="javascript:expandSection('Reports', this);">Reports</a></td>
+                                                                          
+                                                                          
+                                                                      </tr>
+                                                                  </tbody></table>
+                                                              </td>
+                                                          </tr>
+
+                                                          
+
+                                                          <tr><td class="sec_spacer"> </td></tr>
+
+                                                          <!-- Favorites -->
+                                                          <tr name="taskRow" id="favorites_row" expand="true">
+                                                              <td width="100%" height="100%" id="favorites" class="sectionDiv" onmouseover="favorites_expander.src='images/modern_graphite/favorites_icon_hover.gif';" onmouseout="favorites_expander.src='images/modern_graphite/favorites_icon.gif';" onclick="javascript:expandSection('Favorites', this);">
+                                                                  <table border="0" cellpadding="0" cellspacing="0" width="100%" id="Table11" summary="">
+                                                                      <tbody><tr>
+                                                                          
+                                                                          
+                                                                          <td class="sec_body"><img id="favorites_expander" name="expander" src="images/modern_graphite/favorites_icon.gif" border="0" title="Favorites" alt="Favorites" /></td>
+                                                                          <td class="sec_body" width="100%"><a id="favorites_link" class="sectionlink2" title="Favorites" href="javascript:expandSection('Favorites', this);">Favorites</a></td>
+                                                                          
+                                                                          
+                                                                      </tr>
+                                                                  </tbody></table>
+                                                              </td>
+                                                          </tr>
+
+                                                          
+
+                                                          <tr><td class="sec_spacer"> </td></tr>
+
+                                                          <!-- Public Folders -->
+                                                          <tr name="taskRow" id="public_row" expand="true">
+                                                              <td width="100%" height="100%" id="public" class="sectionDiv" onmouseover="public_expander.src='images/modern_graphite/public_icon_hover.gif';" onmouseout="public_expander.src='images/modern_graphite/public_icon.gif';" onclick="javascript:expandSection('Public Folders', this);">
+                                                                  <table border="0" cellpadding="0" cellspacing="0" width="100%" id="Table12" summary="">
+                                                                      <tbody><tr>
+                                                                          
+                                                                          
+                                                                          <td class="sec_body"><img id="public_expander" name="expander" src="images/modern_graphite/public_icon.gif" border="0" title="Public Folders" alt="Public Folders" /></td>
+                                                                          <td class="sec_body" width="100%"><a id="public_link" class="sectionlink2" title="Public Folders" href="javascript:expandSection('Public Folders', this);">Public Folders</a></td>
+                                                                          
+                                                                          
+                                                                      </tr>
+                                                                  </tbody></table>
+                                                              </td>
+                                                          </tr>
+                                                          
+                                                          
+
+                                                          
+                                                      </tbody></table>
+                                                  </td>
+
+                                                  <!--  single row iconic links -->
+                                                  <td style="border-top-width: 4px; border-top-style: solid; border-top-color: white;" id="collapsedSections" align="center" colspan="4" width="100%">
+                                                      <table summary="" width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" id="Table33">
+                                                          <tbody><tr>
+                                                              
+                                                              
+                                                              <td width="100%" class="C2b" style="cursor:pointer" align="center">
+                                                                  <a title="Submit" href="javascript:expandTheSection('Submit', 'submit', false);" class="toolbarlink"><img class="shortbarIcon" border="0" src="images/modern_graphite/submit_icon.gif" title="Submit" alt="Submit" /></a>
+                                                                  <a title="Search" href="javascript:expandTheSection('Search', 'search', false);" class="toolbarlink"><img class="shortbarIcon" border="0" src="images/modern_graphite/search_icon_classic.gif" title="Search" alt="Search" /></a>
+                                                                  <a title="Reports" href="javascript:expandTheSection('Reports', 'report', false);" class="toolbarlink"><img class="shortbarIcon" border="0" src="images/modern_graphite/reports_icon.gif" title="Reports" alt="Reports" /></a>
+                                                                  
+                                                                  <a title="Favorites" href="javascript:expandTheSection('Favorites', 'favorites', false);" class="toolbarlink"><img class="shortbarIcon" border="0" src="images/modern_graphite/favorites_icon.gif" title="Favorites" alt="Favorites" /></a>
+                                                                  
+                                                                  <a title="Public Folders" href="javascript:expandTheSection('Public Folders', 'public', false);" class="toolbarlink"><img class="shortbarIcon" border="0" src="images/modern_graphite/public_icon.gif" title="Public Folders" alt="Public Folders" /></a>
+                                                                  
+                                                                  
+
+                                                                  
+                                                              </td>
+                                                              
+                                                              
+                                                          </tr>
+                                                      </tbody></table>
+                                                  </td>
+                                              </tr>
+
+                                          </tbody></table>
+                                      </div>
+                                  </td>
+
+                                  <td id="spacercell" class="dragger" valign="top">
+                                      <img src="images/space2.gif" width="10" height="1" style="visibility:hidden" title="" alt="" />
+                                  </td>
+
+                                  <td id="contentCell" class="contentCell" width="100%" height="100%" valign="top">
+
+                                      <table summary="" width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" id="Table14">
+                                          <tbody><tr>
+                                              <td class="left">
+                                                  <table summary="" width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" id="Table15">
+                                                      <tbody><tr>
+                                                          <td class="NW4"><img border="0" src="images/modern_graphite/NW4.gif" alt="" title="" /></td>
+                                                      </tr>
+                                                      <tr>
+                                                          <td class="W4" height="100%"> </td>
+                                                      </tr>
+                                                      <tr>
+                                                          <td class="SW4"><img border="0" src="images/modern_graphite/SW4.gif" alt="" title="" /></td>
+                                                      </tr>
+                                                  </tbody></table>
+                                              </td>
+                                              <td width="100%" class="C4b" align="center" valign="top">
+                                                  <iframe width="100%" height="100%" onload="pageLoaded();" name="Home" style="height: 652.65px; width: 100%; visibility: visible;" title="Content View Frame" id="Home" scrolling="auto" src="images/jsblank.gif" frameborder="0"></iframe>
+                                              </td>
+                                              <td class="right">
+                                                  <table summary="" width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" id="Table22">
+                                                      
+                                                      
+                                                      <tbody><tr>
+                                                          <td class="E4" height="100%" id="holder"> <iframe id="overlay" src="" style="position: absolute; display: none; width: 10px; height: 10px; top: 0px; left: 0px; z-index: 999;"></iframe><iframe id="moreOverlay" src="" style="position: absolute; display: none; width: 200px; height: 200px; top: 0px; left: 0px; z-index: 999;"></iframe><iframe id="qlOverlay" src="images/jsblank.gif" style="position: absolute; display: none; width: 10px; height: 10px; top: 0px; left: 0px; z-index: 999;"></iframe></td>
+                                                      </tr>
+                                                      
+                                                  </tbody></table>
+                                              </td>
+                                          </tr>
+                                      </tbody></table>
+
+                                  </td>
+                              </tr>
+                          </tbody></table>
+                      </td>
+                  </tr>
+              </tbody></table>
+          </td>
+      </tr>
+		</tbody></table>
+
+	<!-- Timeout dialog -->
+	<div class="logoutdialog"></div>
+	<div id="userCalendarShimDiv" style="display: none;" class="userCalendarShimDiv"></div>
+	<iframe id="userCalendar" name="userCalendar" frameborder="0" scrolling="no" style="display: none; height: 783.02px; width: 1411.2px; top: 7.99px; left: 14.4px;" src="tmtrack.dll?StdPage&amp;template=usercalendar"></iframe>
+  
+
+<div id="loading" class="loading" style="display: none;"><table summary="" border="0" cellpadding="0" cellspacing="0" id="loadingTable"><tbody><tr><td class="loadingRight"><img onclick="top.stopLoadingWithLock();" id="loadingImg" src="images/loaded.gif" alt="Loading..." title="Loading..." /></td><td class="loadingLeft">Loading...</td></tr></tbody></table></div></body></html>

@@ -1,0 +1,35 @@
+sh int stats d int e 3/1 | inc rate
+sh int stats d int e 3/2 | inc rate
+sh int stats d int e 3/3 | inc rate
+sh int stats d int e 3/4 | inc rate
+sh int stats d int e 3/5 | inc rate
+sh int stats d int e 3/6 | inc rate
+sh int stats d int e 3/7 | inc rate
+sh int stats d int e 3/26 | inc rate
+sh int stats d int e 3/27 | inc rate
+sh int stats d int e 3/28 | inc rate
+
+sh int stats d int e 3/51 | inc rate
+sh int stats d int e 3/52 | inc rate
+
+sh int stats d int e 3/8 | inc rate
+sh int stats d int e 3/9 | inc rate
+sh int stats d int e 3/10 | inc rate
+sh int stats d int e 3/11 | inc rate
+sh int stats d int e 3/12 | inc rate
+sh int stats d int e 3/13 | inc rate
+sh int stats d int e 3/29 | inc rate
+sh int stats d int e 3/30 | inc rate
+sh int stats d int e 3/31 | inc rate
+sh int stats d int e 3/32 | inc rate
+
+sh int stats d int e 3/55 | inc rate
+sh int stats d int e 3/56 | inc rate
+sh int stats d int e 3/57 | inc rate
+sh int stats d int e 3/58 | inc rate
+sh int stats d int e 3/59 | inc rate
+sh int stats d int e 3/60 | inc rate
+sh int stats d int e 3/37 | inc rate
+sh int stats d int e 3/38 | inc rate
+sh int stats d int e 3/39 | inc rate
+sh int stats d int e 3/40 | inc rate

@@ -1,0 +1,45 @@
+#!/usr/bin/expect -f
+#this script works for only fusion 
+proc action_file { filename } {
+    lappend cmd_list ""
+    set fp [open $filename r]
+    while { [gets $fp data] >= 0 } {
+        lappend cmd_list $data
+    }
+    close $fp
+    return $cmd_list
+}
+#sh run is funny, not sure what happened for this, pushing space four times are tedious, exp_continue will not work...
+		    #-exact "--More--" { send " "}
+proc telnet_fusion { ip } {
+    set timeout 10 
+    spawn telnet $ip 
+    set sid $spawn_id
+    expect {
+        -i $sid "login: " { send -i $sid "root\r"; expect -i $sid "word: "; send -i $sid "fibranne\r"; expect -i $sid ""; send -i $sid "\015"; exp_continue }
+        -i $sid "word: " {  send -i $sid "\015" ; exp_continue}
+        timeout {puts "\n\n\tsession timedout after 10 seconds"; exit} 
+        -i $sid ">" { send -i $sid "noscli\r"}
+        }
+    expect -i $sid "# $"
+    send -i $sid "firmware download ftp host\r"
+    expect -i $sid "Value for 'user' (<string>): "
+    send -i $sid "releaseuser\r"
+    expect -i $sid "Value for 'host' (<string>): "
+    send -i $sid "10.31.2.25\r"
+    expect -i $sid "Value for 'directory' (<string>): "
+    send -i $sid "/buildsjc/sre_fusion/Nightly/fusion/nos_fusion_dev_sqa/LATEST_BUILD/dist/\r" 
+    expect -i $sid "Password:" { send -i $sid "releaseuser\r"; exp_continue }
+    after 65000
+    expect -i $sid "Do you want to continue? [y/n]:" 
+    send -i $sid "y\r"
+    expect -i $sid ""
+    #close
+    
+} 
+
+
+
+#expect ****.exp <ip> 
+set ip [lindex $argv 0]
+telnet_fusion $ip 

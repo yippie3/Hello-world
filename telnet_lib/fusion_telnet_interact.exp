@@ -1,0 +1,25 @@
+#!/usr/bin/expect
+#this script works for only fusion and it will interact
+#sh run is funny, not sure what happened for this, pushing space four times are tedious, exp_continue will not work...
+proc telnet_fusion { ip } {
+    set timeout 10 
+    spawn telnet $ip 
+    expect {
+        "login: " { send "root\r"; expect "word: "; send "fibranne\r"; expect ""; send "\015"; exp_continue }
+        "word: " {  send "\015" ; exp_continue}
+        timeout {puts "\n\n\tsession timedout after 10 seconds"; exit} 
+        ">" { send "noscli\r"}
+        }
+
+        expect "#" 
+        interact
+            
+} 
+
+
+
+#expect ****.exp <ip> <file list>
+#set ip [lindex $argv 0]
+telnet_fusion 10.20.98.200
+
+

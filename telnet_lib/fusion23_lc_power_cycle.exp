@@ -1,0 +1,157 @@
+#!/usr/bin/expect
+#this script works for only fusion
+proc action_file { filename } {
+    lappend cmd_list ""
+    set fp [open $filename r]
+    while { [gets $fp data] >= 0 } {
+        lappend cmd_list $data
+    }
+    close $fp
+    return $cmd_list
+}
+#sh run is funny, not sure what happened for this, pushing space four times are tedious, exp_continue will not work...
+proc telnet_fusion { ip filename LC } {
+    puts "LC you choose is $LC"
+    set lc_on "L$LC.*ENABLED"
+    set lc_off "L$LC.*OFF"
+    set lc_faulty "L$LC.*FAULTY"
+    sleep 5
+    set timeout 10
+    spawn telnet $ip
+    expect {
+        "login: " { send "root\r"; expect "word: "; send "fibranne\r"; expect ""; send "\015"; exp_continue }
+        "word: " {  send "\015" ; exp_continue}
+        timeout {puts "\n\n\tsession timedout after 10 seconds"; exit}
+        ">" { send "noscli\r"}
+        }
+
+        expect "# $"
+                while {1} {
+                        send "sh slot\r"
+                        expect "# $"
+                        if [
+                          regexp -linestop ${lc_on} $expect_out(buffer) matchresult
+                        ] then {
+                                puts "-----------------card $LC is on, ready to power off-----------------------"
+                                                                set flist [ regexp -all -inline {\S+} $filename ]
+                                                                foreach f $flist {
+
+                                                                        foreach cmd [action_file $f] {
+                                                                                expect {
+                                                                                        "# $" {send "$cmd\r"}
+                                                                                        -exact "--More--" { send " "}
+
+                                                                                }
+                                                                                        }
+                                                                }
+                                                                expect "# $"
+                                break
+                                                } elseif [
+                                                        regexp -linestop ${lc_faulty} $expect_out(buffer) matchresult
+                                                ] then {
+                                                                puts "---------------card $LC is faulty, this is bug--------------------------"
+                                                                expect "# $"
+                                                                break
+                        } else {
+                          puts "-----------------------card $LC not found------------------------------------"
+
+                                send "\r"
+                                expect "# $"
+                        }
+                }
+
+
+        send "power-off line $LC\r"
+        expect "# $"
+                while {1} {
+                send "sh slot\r"
+                expect "# $"
+                        if [
+                          regexp -linestop ${lc_off} $expect_out(buffer) matchresult
+                        ] then {
+                                puts "-----------------card $LC is OFF, ready to power on-----------------------"
+                                                                set flist [ regexp -all -inline {\S+} $filename ]
+                                                                foreach f $flist {
+
+                                                                        foreach cmd [action_file $f] {
+                                                                                expect {
+                                                                                        "# $" {send "$cmd\r"}
+                                                                                        -exact "--More--" { send " "}
+
+                                                                                }
+                                                                                        }
+                                                                }
+                                                                expect "# $"
+                                break
+                                                } elseif [
+                                                        regexp -linestop ${lc_faulty} $expect_out(buffer) matchresult
+                                                ] then {
+                                                                puts "---------------card $LC is faulty, this is bug-------------------------"
+                                                                expect "# $"
+                                                                break
+                        } else {
+                          puts "-----------------------card $LC not found------------------------------------"
+
+                                send "\r"
+                                expect "# $"
+                        }
+
+                }
+
+        send_user "sleeping for 20s otherwise not able to power on\n"
+        sleep 20
+        send_user "slept for 20s and try to power on\n"
+
+        send "power-on line $LC\r"
+        expect "# $"
+                while {1} {
+                send_user "sleeping for 1 min waiting for sfm ON\n"
+                sleep 60
+                send_user "slept for 1 min and check whether sfm powered ON\n"
+                send "sh slot\r"
+                expect "# $"
+                        if [
+                          regexp -linestop ${lc_on} $expect_out(buffer) matchresult
+                        ] then {
+                                puts "-----------------card $LC is ON, power cycle finished-----------------------"
+                                                                set flist [ regexp -all -inline {\S+} $filename ]
+                                                                foreach f $flist {
+
+                                                                        foreach cmd [action_file $f] {
+                                                                                expect {
+                                                                                        "# $" {send "$cmd\r"}
+                                                                                        -exact "--More--" { send " "}
+
+                                                                                }
+                                                                                        }
+                                                                }
+                                                                expect "# $"
+                                break
+                                                } elseif [
+                                                        regexp -linestop ${lc_faulty} $expect_out(buffer) matchresult
+                                                ] then {
+                                                                puts "---------------card $LC faulty, this is bug-------------------------"
+                                                                expect "# $"
+                                                                break
+                        } else {
+                                                                puts "---------------card $LC not found-------------------------"
+
+                                send "\r"
+                                expect "# $"
+                        }
+
+                }
+
+
+        expect "# $"
+        close
+
+}
+
+
+
+set ip [lindex $argv 0]
+set flist [lindex $argv 1]
+set LC [lindex $argv 2]
+telnet_fusion $ip $flist $LC
+

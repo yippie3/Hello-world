@@ -1,0 +1,41 @@
+#!/usr/bin/expect -f
+#this script works for only fusion 
+proc action_file { filename } {
+    lappend cmd_list ""
+    set fp [open $filename r]
+    while { [gets $fp data] >= 0 } {
+        lappend cmd_list $data
+    }
+    close $fp
+    return $cmd_list
+}
+#sh run is funny, not sure what happened for this, pushing space four times are tedious, exp_continue will not work...
+		    #-exact "--More--" { send " "}
+proc telnet_fusion { ip filename } {
+    set timeout 10 
+    spawn telnet $ip 
+    set sid $spawn_id
+    expect {
+        -i $sid "login: " { send -i $sid "root\r"; expect -i $sid "word: "; send -i $sid "fibranne\r"; expect -i $sid ""; send -i $sid "\015"; exp_continue }
+        -i $sid "word: " {  send "\015" ; exp_continue}
+        timeout {puts "\n\n\tsession timedout after 10 seconds"; exit} 
+        -i $sid ">" { send -i $sid "noscli\r"}
+        }
+        set flist [ regexp -all -inline {\S+} $filename ]
+        foreach f $flist {
+            foreach cmd [action_file $f] {
+                expect -i $sid "# $" 
+                send -i $sid "$cmd\r" 
+            }
+        }
+    expect "# $"
+    close
+    
+} 
+
+
+
+#expect ****.exp <ip> <file list>
+set ip [lindex $argv 0]
+set flist [lindex $argv 1]
+telnet_fusion $ip $flist

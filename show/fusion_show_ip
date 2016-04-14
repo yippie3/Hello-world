@@ -1,0 +1,8 @@
+sh run int e 1/1
+sh run int e 1/3
+sh run int e 7/1
+sh run int e 6/1
+sh run int e 5/1
+sh run int e 6/6
+sh run int e 7/4
+sh run int e 5/6

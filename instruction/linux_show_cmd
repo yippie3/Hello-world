@@ -1,0 +1,123 @@
+agshow                     Displays the Access Gateway information registered
+alishow                    Print zone alias information
+bannershow                 Display security banner
+bcastshow                  Display broadcast routing information
+burninerrshow              Display errors that are stored in the non-volatile
+cfgactvshow                Display Effective zone configuration information
+cfgshow                    Print zone configuration information
+cfgtransshow               Print zone configurations in transaction buffer
+chassisshow                Display all Field Replaceable Units (FRU)
+configshow                 Print switch config parameters
+datatypeshow               Display available diagnostic data types.
+dbgshow                    Display debug levels of various modules
+diagshow                   Display diagnostic status.
+dlsshow                    Display the state of the dynamic load sharing
+enclosureshow              Display the switch enclosure attributes
+errmoduleshow              Displays all the defined modules in the system
+errshow                    Print error log
+fabportshow                Display contents of a particular port's data
+fabretryshow               Display retry count of various fabric commands
+fabricshow                 Print fabric membership info
+fabstatsshow               Displays the fabric statistics information
+fabswitchshow              Display fabric switch state information
+fanshow                    Print fan status
+fcplogshow                 Display FCP probing log information
+fcpprobeshow               Display FCP probing information
+fcprlsshow                 Display FCP RLS (read link state) information
+fcredgeshow                Displays FIDs assigned to defined EX_Port
+fcrfabricshow              Displays FC Routers on a backbone fabric.
+fcrphydevshow              Displays FC Router physical device information.
+fcrproxydevshow            Displays FC Router proxy device information.
+fcrresourceshow            Displays FC Router physical resource usage.
+fcrrouteshow               Displays FC Router route information.
+fdmicacheshow              Display abbreviated remote FDMI device information
+fdmishow                   Display detailed FDMI device information
+ficoncupshow               Displays FICON-CUP parameters for a switch
+ficonshow                  Displays contents of the specified FICON management
+firmwarekeyshow            Manage the keys used to check firmware signatures
+firmwareshow               Display firmware versions in the switch
+fspfshow                   Print FSPF global information
+fwalarmsfiltershow         Show alarms filtering for Fabric Watch
+fwportdetailshow           Create a report with detailed port information
+fwsamshow                  Show availability monitor information
+fwshow                     Show thresholds monitored and port persistence time
+hashow                     Displays control processor (CP) status
+historylastshow            Displays last history record
+historyshow                Displays entire history log
+iflshow                    Display edge switch FCR connection information
+ifmodeshow                 Display the link operating mode for a network
+interfaceshow              Display the FSPF (TM) interface information
+ioddelayshow               Configure in-order-delivery (IOD) delay parameter
+iodshow                    Display the state of the in-order delivery option
+ipaddrshow                 Print ethernet and FC IP addresses
+islshow                    Display the current connections and status
+licenseidshow              Displays the system license ID
+licenseshow                Displays current license keys
+lsanzoneshow               Displays logical SAN zone information.
+lsdbshow                   Displays the FSPF link state database
+memshow                    Display memory usage in the system.
+minispropshow              Displays ASIC pair properties.
+mscapabilityshow           Display Management Server Capability.
+msplatshow                 Display the Management Server Platform Database
+msplatshowdbcb             Display the Management Server Database Control
+nbrstateshow               Display FSPF (TM) neighbors' states
+nsaliasshow                Display local Name Server information with Aliases
+nsallshow                  Print global Name Server information
+nscamshow                  Print local Name Server Cache information
+nsshow                     Print local Name Server information information
+nszoneshow                 Display zone names of specific zoned devices
+pdshow                     Show information from Panic Dump file
+perfmonitorshow            Show end-to-end/filter-based/ISL monitors
+perfresourceshow           Show monitor availability
+perfshowalpacrc            Get ALPA CRC count by port and ALPA
+perfshoweemonitor          Show user-defined end-to-end monitors
+perfshowfiltermonitor      Show filter-based monitors
+perfshowporteemask         Show the current end-to-end mask
+pkishow                    Displays existing public key infrastructure (PKI)
+portalpashow               Show the ALPAs of a port
+portcamshow                Display filter utilization
+portcfgshow                Displays port configuration settings.
+porterrshow                Print port error summary
+portflagsshow              Display the port status bitmaps of all ports in a
+portlogconfigshow          Display portlog configuration
+portlogeventshow           Display information about port log events
+portloginshow              Display port login information
+portlogshow                Print port activity log
+portlogshowport            Print port activity log
+portperfshow               Print port throughput numbers
+portrouteshow              Display various routing tables for a port
+portshow                   Show configured ip interfaces/routes/arp entries on
+portstats64show            Display the 64-bit hardware statistics for a port
+portstatsshow              Print hardware statistics
+portswapshow               Display port and area information
+porttestshow               Retreive information from porttest.
+portzoneshow               Displays the enforced zone type of the F/FL-ports
+powerofflistshow           Displays slot power-off order.
+psshow                     Print power supply status
+rmcf                       RM command to set/show RM compact flash config
+rmcpu                      RM command to set/show RM CPU related config
+rmmem                      RM command to set/show RM memory related config
+secglobalshow              Displays current internal security state
+secpolicyshow              Shows members of one or more policies
+secstatsshow               Displays security statistics
+sensorshow                 Display sensor readings
+sfpshow                    Print Serial ID SFP information
+slotshow                   Displays the status of all slots in the system.
+snmpmibcapshow             Show SNMP Mib/Trap Configuration
+supportshow                Prints switch information for debugging purposes.
+supportshowcfgdisable      Disables a group of commands under supportshow
+supportshowcfgenable       Enables a group of commands under supportshow
+supportshowcfgshow         Displays the groups of commands enabled for
+                           display. by the supportshow command.
+switchshow                 Print switch and port status
+switchstatuspolicyshow     Print policy parameters for overall switch status
+switchstatusshow           Print overall switch status
+syslogdipshow              Print the syslog daemon targets
+tempshow                   Print temperature readings
+timeout                    Set/show the IDLE timeout value for a login session
+topologyshow               Display the unicast fabric topology
+trackchangesshow           Displays status of track changes
+trunkshow                  Display trunking information
+urouteshow                 Display unicast routing information
+zoneshow                   Print zone information
+
